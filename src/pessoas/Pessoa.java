@@ -7,7 +7,7 @@ public class Pessoa {
 
 	private String nomeCompleto;
 	private Calendar dataNascimento;
-	private int cpf;
+	private long cpf;
 	private String endereco;
 	private int telefone;
 	private String tipo;
@@ -107,7 +107,7 @@ public class Pessoa {
 	}
 
 
-	public int getCpf() {
+	public long getCpf() {
 		return this.cpf;
 		
 	}

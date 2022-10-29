@@ -1,6 +1,6 @@
 package pessoas;
 
-import com.ibm.icu.util.Calendar;
+import java.util.Calendar;
 
 public class Funcionario extends Pessoa {
 
