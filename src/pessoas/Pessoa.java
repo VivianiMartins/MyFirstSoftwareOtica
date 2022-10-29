@@ -12,7 +12,7 @@ public class Pessoa {
 	private int telefone;
 	private String tipo;
 	
-	public Pessoa(String nomeCompleto, int dia, int mes, int ano, int cpf, String endereco, int telefone, String tipo) {
+	public Pessoa(String nomeCompleto, int dia, int mes, int ano, long cpf, String endereco, int telefone, String tipo) {
 		this.setNomeCompleto( nomeCompleto);
 		this.setDataNascimento( dia, mes, ano);
 		this.setCpf(cpf);
@@ -21,7 +21,7 @@ public class Pessoa {
 		this.setTipo(tipo);
 	}
 	
-	public Pessoa(String nomeCompleto, int cpf, String endereco, int telefone, String tipo) {
+	public Pessoa(String nomeCompleto, long cpf, String endereco, int telefone, String tipo) {
 		this.setNomeCompleto( nomeCompleto);
 		this.setDataNascimento(00, 00, 0000);
 		this.setCpf(cpf);
@@ -30,16 +30,8 @@ public class Pessoa {
 		this.setTipo(tipo);
 	}
 	
-	public Pessoa(String nomeCompleto, int dia, int mes, int ano, String endereco, int telefone, String tipo) {
-		this.setNomeCompleto( nomeCompleto);
-		this.setDataNascimento(dia, mes, ano);
-		this.setCpf(00000000000);
-		this.setEndereco(endereco);
-		this.setTelefone(telefone);
-		this.setTipo(tipo);
-	}
 	
-	public Pessoa(String nomeCompleto, int dia, int mes, int ano, int cpf, int telefone, String tipo) {
+	public Pessoa(String nomeCompleto, int dia, int mes, int ano, long cpf, int telefone, String tipo) {
 		this.setNomeCompleto( nomeCompleto);
 		this.setDataNascimento(dia, mes, ano);
 		this.setCpf(cpf);
@@ -73,7 +65,7 @@ public class Pessoa {
 	}
 
 
-	private void setCpf(int cpf) {
+	private void setCpf(long cpf) {
 		this.cpf = cpf;
 	}
 

@@ -15,12 +15,10 @@ public class Cliente extends Pessoa{
 	
 	private void setSpc(boolean spc) {
 		this.spc = spc;
-		
 	}
 	
 	public boolean getSpc() {
 		return this.spc;
-		
 	}
 
 	public void criarCliente() {
