@@ -3,13 +3,13 @@ package pessoas;
 public class Cliente extends Pessoa{
 	private boolean spc;
 	
-	public Cliente(String nomeCompleto, int dia, int mes, int ano, int cpf, String endereco, int telefone, boolean spc) {
-		super( nomeCompleto, dia, mes, ano, cpf, endereco, telefone, "cliente");
+	public Cliente(String nomeCompleto, int dia, int mes, int ano, long cpf, String endereco, int telefone, String tipo, boolean spc) {
+		super( nomeCompleto, dia, mes, ano, cpf, endereco, telefone, tipo);
 		this.setSpc(spc);
 	}
 	
-	public Cliente(String nomeCompleto, int dia, int mes, int ano, int cpf, String endereco, int telefone) {
-		super( nomeCompleto, dia, mes, ano, cpf, endereco, telefone, "cliente");
+	public Cliente(String nomeCompleto, int dia, int mes, int ano, int cpf, String endereco, int telefone, String tipo) {
+		super( nomeCompleto, dia, mes, ano, cpf, endereco, telefone, tipo);
 		this.setSpc(false);
 	}
 	

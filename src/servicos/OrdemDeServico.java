@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 public class OrdemDeServico {
 
-	private int numero;
+	static private int numero;
 
 	private String status;
 
@@ -26,6 +26,11 @@ public class OrdemDeServico {
 
 	// tem que ver como fazer isso:
 	//private Produto produtos[];
+	
+	//após uma nova ordem de serviço ser criada este método deve ser chamado:
+	public void setNumero() {
+		numero = numero + 1;
+	}
 
 	public void criarOrdem() {
 
