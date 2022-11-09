@@ -3,7 +3,7 @@ package pessoas;
 import java.util.Calendar;
 
 
-public class Pessoa {
+public abstract class Pessoa {
 
 	private String nomeCompleto;
 	private Calendar dataNascimento;
