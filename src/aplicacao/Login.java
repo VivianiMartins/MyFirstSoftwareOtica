@@ -15,10 +15,11 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
+
 import javax.swing.ImageIcon;
+import javax.swing.JToolBar;
 
 public class Login {
-
 	private JFrame frame;
 	private JPanel panel;
 	private JTextField textField;
@@ -40,6 +41,8 @@ public class Login {
 			}
 		});
 	}
+	
+	
 
 	/**
 	 * Create the application.
@@ -107,4 +110,6 @@ public class Login {
 		panel_1.add(lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("Roboto", Font.PLAIN, 24));
 	}
+
+	
 }
