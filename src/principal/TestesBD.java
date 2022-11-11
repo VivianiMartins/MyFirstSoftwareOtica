@@ -1,16 +1,14 @@
-package aplicacao;
-
-//testes do BD:
+package principal;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import util.Conexao;
+import util.model.Conexao;
 
-public class Principal {
-	private static Conexao conectar = null;
+public class TestesBD {
+private static Conexao conectar = null;
 	
 	public static void main(String[] args) {
 		try{
@@ -47,8 +45,8 @@ public class Principal {
 			//PreparedStatement stmTodosAlunos = con.prepareStatement(comandoDMLTodosAlunos);
 			PreparedStatement stmAlunosMaiorEMenor = con.prepareStatement(comandoDMLAlunosMaiorEMenor);
 	
-			stmAlunosMaiorEMenor.setLong(1, 1200000000);
-			stmAlunosMaiorEMenor.setLong(2, 1300000000);
+			stmAlunosMaiorEMenor.setLong(1, 120000000);
+			stmAlunosMaiorEMenor.setLong(2, 130000000);
 			System.out.println(stmAlunosMaiorEMenor.toString());
 			//stm1.setString(3, "Alexandre");
 			//stm1.executeUpdate();

@@ -1,4 +1,4 @@
-package unidades;
+package unidades.model;
 
 public class Unidade {
 

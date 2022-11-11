@@ -1,4 +1,4 @@
-package itensVisuais;
+package view;
 
 import java.awt.EventQueue;
 
@@ -14,8 +14,10 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JToolBar;
+import controller.LoginController;
 
 public class Login extends JFrame implements ActionListener{
+	private ActionListener controller;
 
 	private JFrame frame;
 	private JPanel panel;
@@ -39,12 +41,12 @@ public class Login extends JFrame implements ActionListener{
 		});
 	}
 	
-	
 
 	/**
 	 * Create the application.
 	 */
 	public Login() {
+		this.controller = controller;
 		initialize();
 	}
 
@@ -74,8 +76,8 @@ public class Login extends JFrame implements ActionListener{
 		btnNewButton.setContentAreaFilled(false);
 	    btnNewButton.setOpaque(true);
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
+			public void actionPerformed(ActionEvent e) {}
+			
 		});
 		btnNewButton.setBounds(261, 451, 133, 41);
 		panel_1.add(btnNewButton);
@@ -109,7 +111,7 @@ public class Login extends JFrame implements ActionListener{
 	}
 
 
-
+//isso tem ue vir de outro lugr
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub

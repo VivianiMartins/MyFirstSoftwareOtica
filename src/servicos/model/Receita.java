@@ -1,4 +1,4 @@
-package servicos;
+package servicos.model;
 
 import java.util.Calendar;
 

@@ -1,12 +1,10 @@
-package aplicacao;
+package principal;
 
-//testes individuais das classes:
-//import pessoas.Pessoa;
-import pessoas.FactoryPessoa;
-import pessoas.Cliente;
-import pessoas.Funcionario;
-import estoque.Armacao;
-import estoque.Lente;
+import estoque.model.Armacao;
+import estoque.model.Lente;
+import pessoas.model.Cliente;
+import pessoas.model.FactoryPessoa;
+import pessoas.model.Funcionario;
 
 
 

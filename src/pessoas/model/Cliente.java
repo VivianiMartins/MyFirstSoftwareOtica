@@ -1,14 +1,14 @@
-package pessoas;
+package pessoas.model;
 
 public class Cliente extends Pessoa{
 	private boolean spc;
 	
-	public Cliente(String nomeCompleto, int dia, int mes, int ano, long cpf, String endereco, int telefone, String tipo, boolean spc) {
+	public Cliente(String nomeCompleto, int dia, int mes, int ano, long cpf, String endereco, int telefone, String tipo, boolean spc) throws PessoaExcecao{
 		super( nomeCompleto, dia, mes, ano, cpf, endereco, telefone, tipo);
 		this.setSpc(spc);
 	}
 	
-	public Cliente(String nomeCompleto, int dia, int mes, int ano, int cpf, String endereco, int telefone, String tipo) {
+	public Cliente(String nomeCompleto, int dia, int mes, int ano, int cpf, String endereco, int telefone, String tipo) throws PessoaExcecao{
 		super( nomeCompleto, dia, mes, ano, cpf, endereco, telefone, tipo);
 		this.setSpc(false);
 	}

@@ -1,40 +1,31 @@
-package pessoas;
+package pessoas.model;
 
 import java.util.Calendar;
 
 public class Funcionario extends Pessoa {
 
 	private Calendar dataContratacao;
-
 	private String senha;
-
 	private String login;
-	
 	private boolean admin;
 	
 	public Funcionario(String nomeCompleto, int dia, int mes, int ano, int cpf, String endereco, int telefone, 
-			int diaContratacao, int mesContratacao, int anoContratacao, String senha, String login, boolean admin) 
+			int diaContratacao, int mesContratacao, int anoContratacao, String senha, String login, boolean admin) throws PessoaExcecao 
 	{
 		super( nomeCompleto, dia, mes, ano, cpf, endereco, telefone, "funcionário");
 		this.setDataContracao(diaContratacao, mesContratacao, anoContratacao);
-
 		this.setSenha(senha);
-
 		this.setLogin(login);
-		
 		this.setAdmin(admin);
 	}
 	
 	public Funcionario(String nomeCompleto, int dia, int mes, int ano, int cpf, String endereco, int telefone, 
-			int diaContratacao, int mesContratacao, int anoContratacao, String senha, String login) 
+			int diaContratacao, int mesContratacao, int anoContratacao, String senha, String login) throws PessoaExcecao 
 	{
 		super( nomeCompleto, dia, mes, ano, cpf, endereco, telefone, "funcionário");
 		this.setDataContracao(diaContratacao, mesContratacao, anoContratacao);
-
 		this.setSenha(senha);
-
 		this.setLogin(login);
-		
 		this.setAdmin(false);
 	}
 	

@@ -1,6 +1,10 @@
-package servicos;
+package servicos.model;
 
 import java.util.Calendar;
+
+import estoque.model.Produto;
+import pessoas.model.Cliente;
+import unidades.model.Unidade;
 
 public class OrdemDeServico {
 
@@ -17,15 +21,15 @@ public class OrdemDeServico {
 	private Calendar dataVenda;
 
 	// tem que ver como fazer isso:
-	//private Cliente cliente;
+	private Cliente cliente;
 
 	private Receita receita;
 
 	// tem que ver como fazer isso:
-	//private Unidade loja;
+	private Unidade loja;
 
 	// tem que ver como fazer isso:
-	//private Produto produtos[];
+	private Produto produtos[];
 	
 	//após uma nova ordem de serviço ser criada este método deve ser chamado:
 	public void setNumero() {

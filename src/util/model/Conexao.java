@@ -1,4 +1,4 @@
-package util;
+package util.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -43,3 +43,4 @@ public class Conexao {
 		}
 	}
 }
+
