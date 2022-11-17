@@ -26,7 +26,7 @@ public class App {
 		 */
 		
 		FactoryPessoa fabricaDePessoas = new FactoryPessoa();
-		Cliente pessoa01 = (Cliente)fabricaDePessoas.getPessoa("Viviani Martins dos Santos", 8, 11, 1987, 01132354121, "Vila do Chaves", 1225544, "Cliente", false);
+		Cliente pessoa01 = (Cliente)fabricaDePessoas.getPessoa(null, 8, 11, 1987, 01132354121, "Vila do Chaves", 1225544, "Cliente", false);
 		Funcionario pessoa02 = (Funcionario)fabricaDePessoas.getPessoa("Teste dois de cadastro", 19, 1, 1986, 01132354121, "Vila do Chaves", 1221214, 
 				29, 10, 2022, "1547866Senha", "loginSeralogin", true);
 		

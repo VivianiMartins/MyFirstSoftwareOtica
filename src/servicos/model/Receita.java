@@ -2,14 +2,16 @@ package servicos.model;
 
 import java.util.Calendar;
 
+import pessoas.model.Cliente;
+
 public class Receita {
 
 	private String nomeMedico;
 
 	private Calendar dataReceita;
 
-	// tem que ver como fazer isso:
-	//private Cliente paciente;
+	//Associação - composição ou agregação:
+	private Cliente paciente;
 
 	private float grauLongeDireitoEsferico;
 
@@ -30,6 +32,8 @@ public class Receita {
 	private float distanciaPupilarDireito;
 
 	private int distanciaPupilarEsquerdo;
+	
+	//add cliente, get cliente
 
 	public void criarReceita() {
 
