@@ -20,21 +20,27 @@ public class OrdemDeServico {
 
 	private Calendar dataVenda;
 
-	// tem que ver como fazer isso:
+	//Associação - composição ou agregação:
 	private Cliente cliente;
-
+	
+	//Associação - composição ou agregação:
 	private Receita receita;
 
-	// tem que ver como fazer isso:
+	//Associação - composição ou agregação:
 	private Unidade loja;
 
-	// tem que ver como fazer isso:
+	//Associação - composição ou agregação:
 	private Produto produtos[];
 	
 	//após uma nova ordem de serviço ser criada este método deve ser chamado:
 	public void setNumero() {
 		numero = numero + 1;
 	}
+	
+	//add cliente, get cliente
+	//get unidade
+	//add receita
+	//get produto
 
 	public void criarOrdem() {
 
