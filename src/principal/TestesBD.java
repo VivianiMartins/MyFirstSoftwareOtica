@@ -40,8 +40,7 @@ private static Conexao conectar = null;
 	
 		try {
 			ResultSet resultado = null;
-	
-	
+
 			//PreparedStatement stmTodosAlunos = con.prepareStatement(comandoDMLTodosAlunos);
 			PreparedStatement stmAlunosMaiorEMenor = con.prepareStatement(comandoDMLAlunosMaiorEMenor);
 	
@@ -78,7 +77,6 @@ private static Conexao conectar = null;
 					sqlE.printStackTrace();
 				}
 			}
-	
 		}
 		finally{
 			if(con != null){
@@ -88,11 +86,7 @@ private static Conexao conectar = null;
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				
-	
 			}
-	
 		}
-		
 	}
 }
