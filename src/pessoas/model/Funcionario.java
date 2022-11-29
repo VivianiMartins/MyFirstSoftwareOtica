@@ -9,20 +9,29 @@ public class Funcionario extends Pessoa {
 	private String login;
 	private boolean admin;
 	
-	public Funcionario(String nomeCompleto, int dia, int mes, int ano, int cpf, String endereco, int telefone, 
+	public Funcionario(String nomeCompleto, int dia, int mes, int ano, int cpf, 
+			String enderecoRua, String enderecoNumero, String enderecoComplemento, String enderecoBairro, 
+			String enderecoCep, String enderecoCidade, String enderecoEstado,  String enderecoPais, int telefone, 
 			int diaContratacao, int mesContratacao, int anoContratacao, String senha, String login, boolean admin) throws PessoaExcecao 
 	{
-		super( nomeCompleto, dia, mes, ano, cpf, endereco, telefone, "funcionário");
+		super( nomeCompleto, dia, mes, ano, cpf, 
+				enderecoRua, enderecoNumero, enderecoComplemento, enderecoBairro, 
+				enderecoCep, enderecoCidade, enderecoEstado,  enderecoPais,
+				telefone, "funcionário");
 		this.setDataContracao(diaContratacao, mesContratacao, anoContratacao);
 		this.setSenha(senha);
 		this.setLogin(login);
 		this.setAdmin(admin);
 	}
 	
-	public Funcionario(String nomeCompleto, int dia, int mes, int ano, int cpf, String endereco, int telefone, 
+	public Funcionario(String nomeCompleto, int dia, int mes, int ano, int cpf, 
+			String enderecoRua, String enderecoNumero, String enderecoComplemento, String enderecoBairro, 
+			String enderecoCep, String enderecoCidade, String enderecoEstado,  String enderecoPais, int telefone, 
 			int diaContratacao, int mesContratacao, int anoContratacao, String senha, String login) throws PessoaExcecao 
 	{
-		super( nomeCompleto, dia, mes, ano, cpf, endereco, telefone, "funcionário");
+		super( nomeCompleto, dia, mes, ano, cpf, 
+				enderecoRua, enderecoNumero, enderecoComplemento, enderecoBairro, 
+				enderecoCep, enderecoCidade, enderecoEstado,  enderecoPais, telefone, "funcionário");
 		this.setDataContracao(diaContratacao, mesContratacao, anoContratacao);
 		this.setSenha(senha);
 		this.setLogin(login);

@@ -166,8 +166,7 @@ public abstract class Pessoa implements CadastrarPessoa{
 	}
 
 	public void cadastrarPessoa() {
-		
-		/*Connection con = conectar.getConexao();
+		Connection con = conectar.getConexao();
 		
 		String inserirPessoa = "INSERT INTO pessoa(cpf, nome_completo, data_nascimento,"
 				+ "						   endereco,telefone) "
@@ -213,11 +212,11 @@ public abstract class Pessoa implements CadastrarPessoa{
 			}
 		}
 		finally{
-			if(con != null){
+			/*if(con != null){
 				con.setAutoCommit(true);
 				con.close();
-			}
-		}*/
+			}*/
+		}
 	}
 
 	public void editarPessoa() {
