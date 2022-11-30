@@ -2,36 +2,35 @@ package principal;
 
 import estoque.model.Armacao;
 import estoque.model.Lente;
+import estoque.model.Produto;
+import ordemDeServico.model.OrdemDeServico;
+import ordemDeServico.model.Receita;
 import pessoas.model.Cliente;
 import pessoas.model.FactoryPessoa;
 import pessoas.model.Funcionario;
+import unidades.model.Unidade;
+import serializacao.Deserializador;
+import serializacao.Serializador;
 
 
 
 public class App {
 	
 	public static void main(String[] args) {
-		//teste de Pessoa
-		/*
-		Pessoa pessoa01 = new Pessoa("Viviani Martins dos Santos", 8, 11, 1987, 01132354121, "Vila do Chaves", 1225544, "Cliente");
-		Pessoa pessoa02 = new Pessoa("Teste dois de cadastro", 19, 1, 1986, 01132354121, "Vila do Chaves", 1221214, "Funcionario");
-		Cliente cliente = new Cliente("Teste de cliente", 19, 1, 1986, 01132354121, "Vila do Chaves", 1221214, true);
-		Funcionario funcionario = new Funcionario("Teste de funcionario", 19, 1, 1986, 01132354121, "Vila do Chaves", 1221214, 
-				29, 10, 2022, "1547866Senha", "loginSeralogin", false);
 		
-		System.out.println("Dados da Pessoa: " + pessoa01);
-		System.out.println("Dados da 2ª Pessoa: " + pessoa02);
-		System.out.println("Dados Cliente: " + cliente);
-		System.out.println("Dados Funcionario: " + funcionario);
-		 */
-		
+		//teste de Pessoa		
 		FactoryPessoa fabricaDePessoas = new FactoryPessoa();
-		Cliente pessoa01 = (Cliente)fabricaDePessoas.getPessoa(null, 8, 11, 1987, 01132354121, "Vila do Chaves", 1225544, "Cliente", false);
-		Funcionario pessoa02 = (Funcionario)fabricaDePessoas.getPessoa("Teste dois de cadastro", 19, 1, 1986, 01132354121, "Vila do Chaves", 1221214, 
-				29, 10, 2022, "1547866Senha", "loginSeralogin", true);
-		
-		
+		//pessoa01 - teste das excepitions
+		/*Cliente pessoa01 = (Cliente)fabricaDePessoas.setPessoa(null, 8, 11, 1987, 01132354121, "Vila do Chaves", "31", "casa", "Acapulco", "75300-000",
+				"Anapolis", "GO", "Brasil",1225544, "Cliente", false);
 		System.out.println("Dados da Pessoa: " + pessoa01);
+		*/
+		Funcionario pessoa02 = (Funcionario)fabricaDePessoas.setPessoa("Teste dois de cadastro", 19, 1, 1986, 01132354121,"Vila do Chaves", "31", "casa", "Acapulco", "75300-000",
+				"Anapolis", "GO", "Brasil", 1221214, 29, 10, 2022, "1547866Senha", "loginSeralogin", true);
+		Cliente cliente = (Cliente)fabricaDePessoas.setPessoa("João da Silva", 8, 11, 1987, 01132354121, "Vila do Chaves", "31", "casa", "Acapulco", "75300-000",
+				"Anapolis", "GO", "Brasil",1225544, "Cliente", false);
+		
+		
 		System.out.println("\nDados da 2ª Pessoa: " + pessoa02);
 		
 
@@ -39,10 +38,54 @@ public class App {
 		//Testes do estoque		
 		Lente lente01 = new Lente("Lab 123",0.20,0.21,21,"Teste",2,"Tratamento teste");
 		Armacao armacao01 = new Armacao("Arredondado",0.20,0.21,30,"RayBan", 2, "Teste", "4321");
+		Produto produto = new Produto("limpa lente", (double)5.0, (double)15.00, 1);
 		
 		System.out.println("\n\nDados da armcacao "+ armacao01);
 		System.out.println("\nDados da lente"+lente01);
-
+		System.out.println("\nProduto"+produto);
+		
+		
+		//Testes unidades
+		Unidade unidade = new Unidade();
+		
+		
+		//Testes receitas
+		Receita receita = new Receita();
+		
+		
+		//Testes da Ordem de Serviço
+		float desconto = (float) 2.00 ;
+		float valorTotal = produto.getPrecoDeVenda();
+		
+		OrdemDeServico nova = new OrdemDeServico("Andamento", valorTotal, desconto, "cartão 5X", "filho de fulana", 
+				30, 11, 2022, cliente , unidade, produto, pessoa02);
+		OrdemDeServico nova2 = new OrdemDeServico("Andamento", valorTotal, desconto, "cartão 5X", "filho de fulana", 
+				30, 11, 2022, cliente ,receita,  unidade, produto, pessoa02);
+		
+		System.out.println("\nOrdem de serviço: " + nova);
+		System.out.println("\nOrdem de serviço: " + nova2);
+		
+		//teste de serialização
+		/*
+		System.out.println("\n\nSerializador"); 
+		Serializador s = new Serializador();
+		try { 
+			  s.serializar("./Ordem1.obj", nova);
+		 }catch (Exception ex){
+			  System.err.println("Falha ao serializar! - " + ex.toString());
+		 }*/
+		
+		//teste de Deserializador 
+		/*System.out.println("\n\nDeserializador");
+		Deserializador d = new Deserializador();
+        nova = null;
+        try {
+            nova = (OrdemDeServico) d.deserializar("./Ordem1.obj");
+        }catch (Exception ex) {
+            System.err.println("Falha ao deserializar! - " + ex.toString());
+        }
+        System.out.println(nova.getNumero() + " - " + nova.getCliente());*/
+		
 	}
 		
 }

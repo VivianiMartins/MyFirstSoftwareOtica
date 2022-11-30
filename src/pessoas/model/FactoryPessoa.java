@@ -4,14 +4,14 @@ import javax.swing.JOptionPane;
 
 public class FactoryPessoa {
 
-	public Pessoa getPessoa (String nomeCompleto, int dia, int mes, int ano, long cpf, 
+	public Pessoa setPessoa (String nomeCompleto, int dia, int mes, int ano, long cpf, 
 			String enderecoRua, String enderecoNumero, String enderecoComplemento, String enderecoBairro, 
 			String enderecoCep, String enderecoCidade, String enderecoEstado,  String enderecoPais,
 			int telefone, String tipo) {
 		return null;
 	}
 
-	public Cliente getPessoa(String nomeCompleto, int dia, int mes, int ano, long cpf, 
+	public Cliente setPessoa(String nomeCompleto, int dia, int mes, int ano, long cpf, 
 			String enderecoRua, String enderecoNumero, String enderecoComplemento, String enderecoBairro, 
 			String enderecoCep, String enderecoCidade, String enderecoEstado,  String enderecoPais, int telefone, String tipo, boolean spc) {
 		try {
@@ -24,7 +24,7 @@ public class FactoryPessoa {
 		}
 	}
 	
-	public Funcionario getPessoa(String nomeCompleto, int dia, int mes, int ano, int cpf,
+	public Funcionario setPessoa(String nomeCompleto, int dia, int mes, int ano, int cpf,
 			String enderecoRua, String enderecoNumero, String enderecoComplemento, String enderecoBairro, 
 			String enderecoCep, String enderecoCidade, String enderecoEstado,  String enderecoPais,
 			 int telefone, int diaContratacao, int mesContratacao, int anoContratacao, 

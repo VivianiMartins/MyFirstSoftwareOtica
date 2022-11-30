@@ -1,7 +1,13 @@
 package estoque.model;
 
-public class Produto {
+import java.io.Serializable;
 
+public class Produto implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String tipo;
 	private double precoDeCusto;
 	private double precoDeVenda;
@@ -70,8 +76,9 @@ public class Produto {
 	}
 	
 	public String toString() {
-		String texto = "Tipo: "+this.getTipo()+"Preco de custo: "+this.getPrecoDeCusto()+"Preco de venda: "+this.getPrecoDeVenda()
-		+"Quantidade: "+this.getQuantidade();
+		String texto = "\nTipo: " + this.getTipo() + "\nPreco de custo: "+this.getPrecoDeCusto() + 
+				"\nPreco de venda: "+this.getPrecoDeVenda()
+		+ "\nQuantidade: "+this.getQuantidade();
 		return texto;
 	}
 }

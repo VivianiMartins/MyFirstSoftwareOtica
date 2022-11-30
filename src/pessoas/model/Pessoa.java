@@ -1,11 +1,16 @@
 package pessoas.model;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public abstract class Pessoa implements CadastrarPessoa{
+public abstract class Pessoa implements CadastrarPessoa, Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nomeCompleto;
 	private String dataNascimento;
 	private long cpf;
@@ -128,7 +133,7 @@ public abstract class Pessoa implements CadastrarPessoa{
 	}
 
 	private void setDataNascimento(int dia, int mes, int ano) {
-		String dataNascimento = ano + "/" + mes + "/" + dia;
+		String dataNascimento = dia + "/" + mes + "/" + ano;
 		this.dataNascimento = dataNascimento;
 	}
 

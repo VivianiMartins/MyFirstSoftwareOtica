@@ -1,10 +1,9 @@
 package pessoas.model;
 
-import java.util.Calendar;
 
 public class Funcionario extends Pessoa {
 
-	private Calendar dataContratacao;
+	private String dataContratacao;
 	private String senha;
 	private String login;
 	private boolean admin;
@@ -39,10 +38,10 @@ public class Funcionario extends Pessoa {
 	}
 	
 	public void setDataContracao(int diaContratacao, int mesContratacao, int anoContratacao) {
-		Calendar dataContratacao = Calendar.getInstance();
-		dataContratacao.set(anoContratacao, mesContratacao, diaContratacao);
+		String dataContratacao = diaContratacao + "/" + mesContratacao + "/" + anoContratacao;
 		this.dataContratacao = dataContratacao;
 	}
+	
 	
 	public void setSenha(String senha) {
 		this.senha = senha;
@@ -58,7 +57,7 @@ public class Funcionario extends Pessoa {
 		this.admin = admin;
 	}
 	
-	public Calendar getDataContracao() {
+	public String getDataContracao() {
 		return this.dataContratacao;
 	}
 	
@@ -87,7 +86,7 @@ public class Funcionario extends Pessoa {
 	}
 	
 	public String toString() {
-		String texto = super.toString() + "\nData Conttratação: " + this.getDataContracao() +
+		String texto = super.toString() + "\nData Contratação: " + this.getDataContracao() +
 				"\nLogin: " + this.getLogin() + "\nSenha: " + this.getSenha()
 				+ "\nAdministrador: " + this.getAdmin();
 		return texto;

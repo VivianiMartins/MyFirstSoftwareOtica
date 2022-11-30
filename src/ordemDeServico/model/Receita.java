@@ -1,10 +1,11 @@
 package ordemDeServico.model;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import pessoas.model.Cliente;
 
-public class Receita {
+public class Receita implements Serializable{
 
 	private String nomeMedico;
 

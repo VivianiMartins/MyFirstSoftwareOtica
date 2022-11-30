@@ -1,6 +1,7 @@
 package pessoas.model;
 
 public class Cliente extends Pessoa{
+
 	private boolean spc;
 	
 	public Cliente(String nomeCompleto, int dia, int mes, int ano, long cpf,
