@@ -1,6 +1,8 @@
 package estoque.model;
 
-public class Lente extends Produto {
+import java.io.Serializable;
+
+public class Lente extends Produto implements Serializable {
 	
 	private String laboratorio;
 	private int grau;

@@ -20,6 +20,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
 import pesquisa.view.TelaPesquisa;
+import java.awt.Toolkit;
 
 public class TelaEstoqueDisponivelLente extends JFrame {
 
@@ -55,6 +56,7 @@ public class TelaEstoqueDisponivelLente extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaEstoqueDisponivelLente() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaEstoqueDisponivelLente.class.getResource("/imagens/icon.png")));
 getContentPane().setBackground(new Color(229, 229, 229));
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

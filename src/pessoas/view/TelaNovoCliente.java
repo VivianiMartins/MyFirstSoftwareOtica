@@ -21,6 +21,7 @@ import javax.swing.border.EmptyBorder;
 import pesquisa.view.TelaPesquisa;
 
 import javax.swing.JRadioButton;
+import java.awt.Toolkit;
 
 public class TelaNovoCliente extends JFrame {
 
@@ -29,7 +30,6 @@ public class TelaNovoCliente extends JFrame {
 	private JTextField textFieldCPF;
 	private JTextField textFieldDataNasc;
 	private JTextField textFieldTelefone;
-	private JTextField textFieldTelefone2;
 	private JTextField textFieldEndereco;
 	private JTextField textFieldNumeroEnd;
 	private JTextField textFieldComplemento;
@@ -57,6 +57,7 @@ public class TelaNovoCliente extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaNovoCliente() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaNovoCliente.class.getResource("/imagens/icon.png")));
 getContentPane().setBackground(new Color(229, 229, 229));
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -97,9 +98,6 @@ getContentPane().setBackground(new Color(229, 229, 229));
 		JLabel lbEndereco = new JLabel("Endereço");
 		lbEndereco.setFont(new Font("Roboto", Font.PLAIN, 18));
 		
-		JLabel lbTelefone2 = new JLabel("Telefone 2*");
-		lbTelefone2.setFont(new Font("Roboto", Font.PLAIN, 18));
-		
 		JLabel lblNumero = new JLabel("Número");
 		lblNumero.setFont(new Font("Roboto", Font.PLAIN, 18));
 		
@@ -133,10 +131,6 @@ getContentPane().setBackground(new Color(229, 229, 229));
 		textFieldTelefone = new JTextField();
 		textFieldTelefone.setFont(new Font("Roboto", Font.PLAIN, 11));
 		textFieldTelefone.setColumns(10);
-		
-		textFieldTelefone2 = new JTextField();
-		textFieldTelefone2.setFont(new Font("Roboto", Font.PLAIN, 11));
-		textFieldTelefone2.setColumns(10);
 		
 		textFieldEndereco = new JTextField();
 		textFieldEndereco.setFont(new Font("Roboto", Font.PLAIN, 11));
@@ -207,71 +201,69 @@ getContentPane().setBackground(new Color(229, 229, 229));
 					.addGap(41)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(lblEstado, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-							.addGap(590))
-						.addGroup(gl_panel_1.createSequentialGroup()
 							.addComponent(textFieldDataNasc, GroupLayout.PREFERRED_SIZE, 307, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap())
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(textFieldCPF, GroupLayout.PREFERRED_SIZE, 307, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap())
-						.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
-							.addComponent(btnVerOrdensDe)
-							.addGap(93)
-							.addComponent(btnEditar, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
-							.addGap(39)
-							.addComponent(btnVoltar, GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-							.addGap(49))
-						.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-								.addComponent(lbDataNasc, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lbCPF, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lbNomeCompleto, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE))
-							.addContainerGap(519, Short.MAX_VALUE))
-						.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
+						.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_panel_1.createSequentialGroup()
+								.addComponent(textFieldCPF, GroupLayout.PREFERRED_SIZE, 307, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap())
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
-								.addComponent(textFieldNomeCompleto, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addComponent(lblEstado, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+									.addGap(590))
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addComponent(btnVerOrdensDe)
+									.addGap(93)
+									.addComponent(btnEditar, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
+									.addGap(39)
+									.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
+									.addContainerGap(49, Short.MAX_VALUE))
 								.addGroup(gl_panel_1.createSequentialGroup()
 									.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-										.addComponent(lbTelefone, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE)
-										.addComponent(textFieldTelefone, GroupLayout.PREFERRED_SIZE, 307, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lbEndereco, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE)
-										.addComponent(textFieldEndereco, GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE))
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-										.addComponent(lbTelefone2, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE)
-										.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
-											.addComponent(textFieldTelefone2, GroupLayout.PREFERRED_SIZE, 307, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lbDataNasc, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lbCPF, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lbNomeCompleto, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE))
+									.addContainerGap(515, Short.MAX_VALUE))
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
+										.addComponent(textFieldNomeCompleto, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
+										.addGroup(gl_panel_1.createSequentialGroup()
+											.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+												.addComponent(lbTelefone, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE)
+												.addComponent(textFieldTelefone, GroupLayout.PREFERRED_SIZE, 307, GroupLayout.PREFERRED_SIZE)
+												.addComponent(lbEndereco, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE)
+												.addComponent(textFieldEndereco, GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE))
+											.addGap(175)
 											.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 												.addComponent(lblNumero, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)
-												.addComponent(textFieldNumeroEnd, GroupLayout.PREFERRED_SIZE, 138, GroupLayout.PREFERRED_SIZE))))))
-							.addGap(23))
-						.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
+												.addComponent(textFieldNumeroEnd, GroupLayout.PREFERRED_SIZE, 138, GroupLayout.PREFERRED_SIZE))))
+									.addGap(23))
 								.addGroup(gl_panel_1.createSequentialGroup()
-									.addComponent(lblComplemento, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE)
-									.addGap(50))
+									.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
+										.addGroup(gl_panel_1.createSequentialGroup()
+											.addComponent(lblComplemento, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE)
+											.addGap(50))
+										.addGroup(gl_panel_1.createSequentialGroup()
+											.addComponent(textFieldComplemento, GroupLayout.PREFERRED_SIZE, 138, GroupLayout.PREFERRED_SIZE)
+											.addGap(49)))
+									.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+										.addComponent(lblCep, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+										.addComponent(textFieldCEP, GroupLayout.PREFERRED_SIZE, 138, GroupLayout.PREFERRED_SIZE))
+									.addGap(49)
+									.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+										.addComponent(lblCidade, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE)
+										.addComponent(textFieldCidade, GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE))
+									.addGap(23))
 								.addGroup(gl_panel_1.createSequentialGroup()
-									.addComponent(textFieldComplemento, GroupLayout.PREFERRED_SIZE, 138, GroupLayout.PREFERRED_SIZE)
-									.addGap(49)))
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblCep, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textFieldCEP, GroupLayout.PREFERRED_SIZE, 138, GroupLayout.PREFERRED_SIZE))
-							.addGap(49)
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblCidade, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textFieldCidade, GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE))
-							.addGap(23))
-						.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING, false)
-								.addGroup(gl_panel_1.createSequentialGroup()
-									.addComponent(lblConsultaNoSpc, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
-									.addGap(18)
-									.addComponent(rdbtnSPCSim)
-									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(rdbtnSPCNao))
-								.addComponent(textFieldEstado, GroupLayout.PREFERRED_SIZE, 291, GroupLayout.PREFERRED_SIZE))
-							.addContainerGap(397, Short.MAX_VALUE))))
+									.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING, false)
+										.addGroup(gl_panel_1.createSequentialGroup()
+											.addComponent(lblConsultaNoSpc, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
+											.addGap(18)
+											.addComponent(rdbtnSPCSim)
+											.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+											.addComponent(rdbtnSPCNao))
+										.addComponent(textFieldEstado, GroupLayout.PREFERRED_SIZE, 291, GroupLayout.PREFERRED_SIZE))
+									.addContainerGap(393, Short.MAX_VALUE))))))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -289,13 +281,9 @@ getContentPane().setBackground(new Color(229, 229, 229));
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(textFieldDataNasc, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
 					.addGap(13)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lbTelefone, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lbTelefone2, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE))
+					.addComponent(lbTelefone, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textFieldTelefone, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textFieldTelefone2, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+					.addComponent(textFieldTelefone, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
 					.addGap(17)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lbEndereco, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
@@ -316,7 +304,7 @@ getContentPane().setBackground(new Color(229, 229, 229));
 							.addComponent(textFieldCEP, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
 							.addComponent(textFieldCidade, GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)))
 					.addGap(18)
-					.addComponent(lblEstado, GroupLayout.PREFERRED_SIZE, 18, Short.MAX_VALUE)
+					.addComponent(lblEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(textFieldEstado, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
@@ -430,4 +418,3 @@ getContentPane().setBackground(new Color(229, 229, 229));
 		getContentPane().setLayout(groupLayout);
 	}
 }
-

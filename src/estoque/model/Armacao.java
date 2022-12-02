@@ -1,6 +1,8 @@
 package estoque.model;
 
-public class Armacao extends Produto{
+import java.io.Serializable;
+
+public class Armacao extends Produto implements Serializable{
 	
 	private String marca;
 	private int cor;

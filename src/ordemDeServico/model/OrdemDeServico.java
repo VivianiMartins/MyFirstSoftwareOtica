@@ -3,6 +3,8 @@ package ordemDeServico.model;
 //Serialização será usada aqui
 import java.io.Serializable;
 
+import estoque.model.Armacao;
+import estoque.model.Lente;
 import estoque.model.Produto;
 import pessoas.model.Cliente;
 import pessoas.model.Funcionario;
@@ -25,13 +27,102 @@ public class OrdemDeServico implements Serializable{
 	private Receita receita;
 	//Associação - composição:
 	private Unidade unidade;
-	//Associação - composição:
+	//Associação - agregação:
 	private Produto produtos;
+	//Associação - agregação:
+	private Armacao armacao;
+	//Associação - agregação:
+	private Lente lente;
 	//Associação - composição:
 	private Funcionario funcionario;
 	
 	public OrdemDeServico(String status, float valorTotal, float desconto, String formaPagamento, String observacoes, 
-			int diaVenda, int mesVenda, int anoVenda, Cliente cliente, Receita receita ,Unidade unidade, Produto produtos, Funcionario funcionario) {
+			int diaVenda, int mesVenda, int anoVenda, Cliente cliente, Receita receita ,Unidade unidade, Produto produtos,
+			Armacao armacao, Lente lente, Funcionario funcionario) {
+		this.setNumero();
+		this.setStatus(status);
+		this.setValorTotal(valorTotal, desconto);	
+		this.setFormaPagamento(formaPagamento);
+		this.setObservacoes(observacoes);
+		this.setDataVenda(diaVenda, mesVenda, anoVenda);
+		this.setCliente(cliente);
+		this.setReceita(receita);
+		this.setUnidade(unidade);
+		this.setProduto(produtos);
+		this.setArmacao(armacao);
+		this.setLente(lente);
+		this.setFuncionario(funcionario);
+	}
+	
+	public OrdemDeServico(String status, float valorTotal, float desconto, String formaPagamento, String observacoes, 
+			int diaVenda, int mesVenda, int anoVenda, Cliente cliente, Unidade unidade, Produto produtos,
+			Armacao armacao, Lente lente, Funcionario funcionario) {
+		this.setNumero();
+		this.setStatus(status);
+		this.setValorTotal(valorTotal, desconto);	
+		this.setFormaPagamento(formaPagamento);
+		this.setObservacoes(observacoes);
+		this.setDataVenda(diaVenda, mesVenda, anoVenda);
+		this.setCliente(cliente);
+		this.setUnidade(unidade);
+		this.setProduto(produtos);
+		this.setArmacao(armacao);
+		this.setLente(lente);
+		this.setFuncionario(funcionario);
+	}
+	
+	public OrdemDeServico(String status, float valorTotal, float desconto, String formaPagamento, String observacoes, 
+			int diaVenda, int mesVenda, int anoVenda, Cliente cliente ,Unidade unidade, Produto produtos,
+			Armacao armacao, Funcionario funcionario) {
+		this.setNumero();
+		this.setStatus(status);
+		this.setValorTotal(valorTotal, desconto);	
+		this.setFormaPagamento(formaPagamento);
+		this.setObservacoes(observacoes);
+		this.setDataVenda(diaVenda, mesVenda, anoVenda);
+		this.setCliente(cliente);
+		this.setUnidade(unidade);
+		this.setProduto(produtos);
+		this.setArmacao(armacao);
+		this.setFuncionario(funcionario);
+	}
+	
+	public OrdemDeServico(String status, float valorTotal, float desconto, String formaPagamento, String observacoes, 
+			int diaVenda, int mesVenda, int anoVenda, Cliente cliente, Receita receita ,Unidade unidade,
+			Armacao armacao, Lente lente, Funcionario funcionario) {
+		this.setNumero();
+		this.setStatus(status);
+		this.setValorTotal(valorTotal, desconto);	
+		this.setFormaPagamento(formaPagamento);
+		this.setObservacoes(observacoes);
+		this.setDataVenda(diaVenda, mesVenda, anoVenda);
+		this.setCliente(cliente);
+		this.setReceita(receita);
+		this.setUnidade(unidade);
+		this.setArmacao(armacao);
+		this.setLente(lente);
+		this.setFuncionario(funcionario);
+	}
+	
+	public OrdemDeServico(String status, float valorTotal, float desconto, String formaPagamento, String observacoes, 
+			int diaVenda, int mesVenda, int anoVenda, Cliente cliente, Receita receita ,Unidade unidade,
+			 Lente lente, Funcionario funcionario) {
+		this.setNumero();
+		this.setStatus(status);
+		this.setValorTotal(valorTotal, desconto);	
+		this.setFormaPagamento(formaPagamento);
+		this.setObservacoes(observacoes);
+		this.setDataVenda(diaVenda, mesVenda, anoVenda);
+		this.setCliente(cliente);
+		this.setReceita(receita);
+		this.setUnidade(unidade);
+		this.setLente(lente);
+		this.setFuncionario(funcionario);
+	}
+	
+	public OrdemDeServico(String status, float valorTotal, float desconto, String formaPagamento, String observacoes, 
+			int diaVenda, int mesVenda, int anoVenda, Cliente cliente, Receita receita ,Unidade unidade, Produto produtos,
+			Funcionario funcionario) {
 		this.setNumero();
 		this.setStatus(status);
 		this.setValorTotal(valorTotal, desconto);	
@@ -46,10 +137,11 @@ public class OrdemDeServico implements Serializable{
 	}
 	
 	public OrdemDeServico(String status, float valorTotal, float desconto, String formaPagamento, String observacoes, 
-			int diaVenda, int mesVenda, int anoVenda, Cliente cliente ,Unidade unidade, Produto produtos, Funcionario funcionario) {
+			int diaVenda, int mesVenda, int anoVenda, Cliente cliente, Unidade unidade, Produto produtos,
+			 Funcionario funcionario) {
 		this.setNumero();
 		this.setStatus(status);
-		this.setValorTotal(valorTotal, desconto);
+		this.setValorTotal(valorTotal, desconto);	
 		this.setFormaPagamento(formaPagamento);
 		this.setObservacoes(observacoes);
 		this.setDataVenda(diaVenda, mesVenda, anoVenda);
@@ -58,7 +150,7 @@ public class OrdemDeServico implements Serializable{
 		this.setProduto(produtos);
 		this.setFuncionario(funcionario);
 	}
-
+	
 	//após uma nova ordem de serviço ser criada este método deve ser chamado:
 	public void setNumero() {
 		numero = numero + 1;
@@ -109,6 +201,13 @@ public class OrdemDeServico implements Serializable{
 		this.produtos = produtos;
 	}
 	
+	private void setArmacao(Armacao armacao) {
+		this.armacao = armacao;
+	}
+	private void setLente(Lente lente) {
+		this.lente = lente;
+	}
+	
 	private void setFuncionario(Funcionario funcionario){
 		this.funcionario = funcionario;
 	}
@@ -153,6 +252,13 @@ public class OrdemDeServico implements Serializable{
 		return this.produtos;
 	}
 	
+	public Armacao getArmacao() {
+		return this.armacao;
+	}
+	public Lente getLente() {
+		return this.lente;
+	}
+	
 	public Funcionario getFuncionario(){
 		return this.funcionario;
 	}
@@ -179,7 +285,8 @@ public class OrdemDeServico implements Serializable{
 				getFormaPagamento() + "\nObservações: " + this.getObservacoes() +
 				"\nData:" + this.getDataVenda() + "\nCliente: " + this.getCliente() +  
 				  "\nReceita: " + this.getReceita() + "\nLoja: " + getUnidade() +
-				  "\nProdutos:" + this.getProduto() + "\nVendedor: " + this.getFuncionario() +  
+				  "\nProdutos:" + this.getProduto() + "\nArmação:" + getArmacao() + 
+				  "\nPLente:" + getLente() + "\nVendedor: " + this.getFuncionario() +  
 				  "\nReceita: " + this.getReceita() + "\nLoja: " + getUnidade();
 		return texto;
 	}

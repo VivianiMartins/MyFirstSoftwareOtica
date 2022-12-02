@@ -22,6 +22,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextArea;
 import javax.swing.DropMode;
 import javax.swing.JTextField;
+import java.awt.Toolkit;
 
 public class TelaPesquisa extends JFrame {
 	private JTextField textField;
@@ -47,6 +48,7 @@ public class TelaPesquisa extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaPesquisa() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaPesquisa.class.getResource("/imagens/icon.png")));
 		getContentPane().setBackground(new Color(201, 201, 201));
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

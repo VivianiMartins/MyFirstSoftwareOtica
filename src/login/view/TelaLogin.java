@@ -21,6 +21,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import login.controller.LoginController;
 
 import javax.swing.SwingConstants;
+import java.awt.Toolkit;
 
 public class TelaLogin extends JFrame implements ActionListener{
 	private ActionListener controller;
@@ -62,6 +63,7 @@ public class TelaLogin extends JFrame implements ActionListener{
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(TelaLogin.class.getResource("/imagens/logo.png")));
 		frame.setBounds(100, 100, 825, 680);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

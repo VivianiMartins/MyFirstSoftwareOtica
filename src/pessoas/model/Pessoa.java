@@ -7,10 +7,6 @@ import java.sql.SQLException;
 
 public abstract class Pessoa implements CadastrarPessoa, Serializable{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private String nomeCompleto;
 	private String dataNascimento;
 	private long cpf;
