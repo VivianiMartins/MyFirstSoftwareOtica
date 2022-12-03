@@ -3,10 +3,15 @@ package pessoas.model;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public abstract class Pessoa implements CadastrarPessoa, Serializable{
+import util.model.Conexao;
 
+public abstract class Pessoa implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
 	private String nomeCompleto;
 	private String dataNascimento;
 	private long cpf;
@@ -167,57 +172,59 @@ public abstract class Pessoa implements CadastrarPessoa, Serializable{
 	}
 
 	public void cadastrarPessoa() {
+		/*
+		Conexao conectar = null;
+		try{
+			conectar = new Conexao();
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}finally{
+			if(conectar != null) {
+				conectar.fecharConexao();
+			}		
+		}
 		Connection con = conectar.getConexao();
-		
-		String inserirPessoa = "INSERT INTO pessoa(cpf, nome_completo, data_nascimento,"
-				+ "						   endereco,telefone) "
-				+ "VALUES (?, ?, ?, ?, ?, "
-				+ "	?,)";
+		 final String inserirPessoa = "INSERT INTO pessoa(cpf, nome_completo, data_nascimento, endereco,telefone) VALUES (?, ?, ?, ?, ?)";
 		
 		try{
-			PreparedStatement stmInserirPessoa = con.prepareStatement(inserirPessoa);
-
+			 PreparedStatement stmInserirPessoa = con.prepareStatement(inserirPessoa);
 			//Montando os valores
-			//nome:
-			stmInserirPessoa.setString(1, this.nomeCompleto);
-			//data de nascimento:
-			stmInserirPessoa.setString(2, this.dataNascimento);
 			//cpf:
-			stmInserirPessoa.setLong(3, this.cpf);
+			stmInserirPessoa.setLong(1, this.cpf);
+			//nome:
+			stmInserirPessoa.setString(2, this.nomeCompleto);
 			//endereco:
-			stmInserirPessoa.setString(4, this.endereco);
+			stmInserirPessoa.setString(3, this.endereco);
+			//data de nascimento:
+			stmInserirPessoa.setString(4, this.dataNascimento);
 			//telefone
 			stmInserirPessoa.setInt(5, this.telefone);
-			//tipo
-			stmInserirPessoa.setString(6, this.tipo);
-			
-
-			//Desativando o Auto Commit do banco
-			con.setAutoCommit(false);
-
+			int row = stmInserirPessoa.executeUpdate();
 			//Aqui ocorre o registro: 
-			stmInserirPessoa.executeUpdate();
-			System.out.println("Insercao executada corretamente!");
-			con.commit();
-
-
+			//stmInserirPessoa.executeUpdate();
+			System.out.println("Insercao executada corretamente!" + row);
 		}catch (SQLException e) {
+			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
 			e.printStackTrace();
 			if(con != null){
 				try{
 					System.err.print("Falha insercao!");
-					con.rollback();
+					con.close();
 				}catch(SQLException sqlE){
 					sqlE.printStackTrace();
 				}
 			}
 		}
 		finally{
-			/*if(con != null){
-				con.setAutoCommit(true);
-				con.close();
-			}*/
+			if(con != null){
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
+		*/
 	}
 
 	public void editarPessoa() {
@@ -228,8 +235,66 @@ public abstract class Pessoa implements CadastrarPessoa, Serializable{
 
 	}
 
-	public void pesquisarPessoa() {
-
+	public void pesquisarPessoa(long cpf) {
+		/*
+		Conexao conectar = null;
+		try{
+			conectar = new Conexao();
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		finally{
+			if(conectar != null)
+				conectar.fecharConexao();
+		}
+		Connection con = conectar.getConexao();
+		String pesquisarPessoa = "SELECT cpf, nome_completo,telefone, endereco FROM pessoa " +
+					"WHERE cpf = ?;";
+		
+		try {
+			ResultSet resultado = null;
+			PreparedStatement stmPesquisarPessoa = con.prepareStatement(pesquisarPessoa);
+		
+			stmPesquisarPessoa.setLong(1, cpf);
+			System.out.println(stmPesquisarPessoa.toString());
+				
+			resultado = stmPesquisarPessoa.executeQuery();
+			int iCpf = 1; 
+			int iNome = 2;
+			int iTelefone = 3;
+			int iEndereco = 4;
+			int conta = 0;
+			if(resultado != null){
+				while(resultado.next()){
+					System.out.println("Nome: " + resultado.getString(iNome) + "CPF: " + resultado.getObject(iCpf)+
+							"Telefone: " + resultado.getObject(iTelefone) + "Endereço: " + 
+							resultado.getObject(iEndereco));
+					conta++;
+				}
+				System.out.println(conta);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			if(con != null){
+				try{
+					System.err.print("Falha transacao em Rollback!!!!");
+					con.rollback();
+				}catch(SQLException sqlE){
+					sqlE.printStackTrace();
+				}
+			}
+		}
+		finally{
+			if(con != null){
+				try {
+					con.setAutoCommit(true);
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		*/
 	}
 	
 	public String toString() {
