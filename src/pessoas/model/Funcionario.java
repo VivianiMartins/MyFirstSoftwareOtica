@@ -10,7 +10,7 @@ public class Funcionario extends Pessoa {
 	
 	public Funcionario(String nomeCompleto, int dia, int mes, int ano, int cpf, 
 			String enderecoRua, String enderecoNumero, String enderecoComplemento, String enderecoBairro, 
-			String enderecoCep, String enderecoCidade, String enderecoEstado,  String enderecoPais, int telefone, 
+			String enderecoCep, String enderecoCidade, String enderecoEstado,  String enderecoPais, long telefone, 
 			int diaContratacao, int mesContratacao, int anoContratacao, String senha, String login, boolean admin) throws PessoaExcecao 
 	{
 		super( nomeCompleto, dia, mes, ano, cpf, 
@@ -25,7 +25,7 @@ public class Funcionario extends Pessoa {
 	
 	public Funcionario(String nomeCompleto, int dia, int mes, int ano, int cpf, 
 			String enderecoRua, String enderecoNumero, String enderecoComplemento, String enderecoBairro, 
-			String enderecoCep, String enderecoCidade, String enderecoEstado,  String enderecoPais, int telefone, 
+			String enderecoCep, String enderecoCidade, String enderecoEstado,  String enderecoPais, long telefone, 
 			int diaContratacao, int mesContratacao, int anoContratacao, String senha, String login) throws PessoaExcecao 
 	{
 		super( nomeCompleto, dia, mes, ano, cpf, 

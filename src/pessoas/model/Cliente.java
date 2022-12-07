@@ -7,7 +7,7 @@ public class Cliente extends Pessoa{
 	public Cliente(String nomeCompleto, int dia, int mes, int ano, long cpf,
 			String enderecoRua, String enderecoNumero, String enderecoComplemento, String enderecoBairro, 
 			String enderecoCep, String enderecoCidade, String enderecoEstado,  String enderecoPais,
-			int telefone, String tipo, boolean spc) throws PessoaExcecao{
+			long telefone, String tipo, boolean spc) throws PessoaExcecao{
 		super( nomeCompleto, dia, mes, ano, cpf, enderecoRua, enderecoNumero, enderecoComplemento, enderecoBairro, 
 				enderecoCep, enderecoCidade, enderecoEstado,  enderecoPais, telefone, tipo);
 		this.setSpc(spc);
@@ -16,7 +16,7 @@ public class Cliente extends Pessoa{
 	public Cliente(String nomeCompleto, int dia, int mes, int ano, int cpf, 
 			String enderecoRua, String enderecoNumero, String enderecoComplemento, String enderecoBairro, 
 			String enderecoCep, String enderecoCidade, String enderecoEstado,  String enderecoPais,
-			int telefone, String tipo) throws PessoaExcecao{
+			long telefone, String tipo) throws PessoaExcecao{
 		super( nomeCompleto, dia, mes, ano, cpf, 
 				enderecoRua, enderecoNumero, enderecoComplemento, enderecoBairro, 
 				enderecoCep, enderecoCidade, enderecoEstado,  enderecoPais, telefone, tipo);

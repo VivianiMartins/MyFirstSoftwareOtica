@@ -1,5 +1,10 @@
 package principal;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import estoque.model.Armacao;
 import estoque.model.Lente;
 import estoque.model.Produto;
@@ -9,6 +14,7 @@ import pessoas.model.Cliente;
 import pessoas.model.FactoryPessoa;
 import pessoas.model.Funcionario;
 import unidades.model.Unidade;
+import util.model.Conexao;
 import serializacao.Deserializador;
 import serializacao.Serializador;
 
@@ -38,11 +44,16 @@ public class App {
 		
 		//teste do BD com metodos da pessoa
 		FactoryPessoa fabricaDePessoas = new FactoryPessoa();
-
+		
+		//teste Insert:
 		Cliente clienteBD = (Cliente)fabricaDePessoas.setPessoa("Joana da Silva", 8, 11, 1987, 05632354121, "Vila do Chaves", "31", "casa", "Acapulco", "75300-000",
 				"Anapolis", "GO", "Brasil",1225544, "Cliente", false);
-		clienteBD.cadastrarPessoa();
-
+		System.out.println("\ncliente BD: " + clienteBD);
+		//clienteBD.cadastrarPessoa();
+		
+		//teste procura com CPF:
+		//Cliente.pesquisarPessoa(1234567891);
+		
 		/*
 		//Testes do estoque		
 		Lente lente01 = new Lente("Lab 123",0.20,0.21,21,"Teste",2,"Tratamento teste");
@@ -104,6 +115,8 @@ public class App {
 		
 		
 	}
+
+	
 		
 }
 

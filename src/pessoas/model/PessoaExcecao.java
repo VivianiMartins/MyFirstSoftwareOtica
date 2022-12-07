@@ -3,13 +3,13 @@ package pessoas.model;
 public class PessoaExcecao extends Exception {
 	static String texto;
 	
-	public PessoaExcecao (String nomeCompleto, long cpf, int telefone){ 
+	public PessoaExcecao (String nomeCompleto, long cpf, long telefone){ 
 		super("Campo(s) obrigatório(s):"+texto);
 		this.setTexto(nomeCompleto, cpf, telefone);
 		this.toString();
 	}
 	
-	void setTexto(String nomeCompleto, long cpf, int telefone) {
+	void setTexto(String nomeCompleto, long cpf, long telefone) {
 		if(nomeCompleto == null) {
 			texto = texto + "\nNome.";
 		}

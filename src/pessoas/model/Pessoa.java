@@ -16,13 +16,13 @@ public abstract class Pessoa implements Serializable{
 	private String dataNascimento;
 	private long cpf;
 	private String endereco;
-	private int telefone;
+	private long telefone;
 	private String tipo;
 	
 	public Pessoa(String nomeCompleto, int dia, int mes, int ano, long cpf, 
 			String enderecoRua, String enderecoNumero, String enderecoComplemento, String enderecoBairro, 
 			String enderecoCep, String enderecoCidade, String enderecoEstado,  String enderecoPais,
-			int telefone, String tipo) throws PessoaExcecao{
+			long telefone, String tipo) throws PessoaExcecao{
 		if(nomeCompleto != null && cpf > 0 && telefone > 0) {
 			this.setNomeCompleto( nomeCompleto);
 			this.setDataNascimento( dia, mes, ano);
@@ -37,7 +37,7 @@ public abstract class Pessoa implements Serializable{
 	
 	public Pessoa(String nomeCompleto, long cpf, String enderecoRua, String enderecoNumero, String enderecoComplemento, String enderecoBairro, 
 			String enderecoCep, String enderecoCidade, String enderecoEstado,  String enderecoPais,
-			int telefone, String tipo) throws PessoaExcecao{
+			long telefone, String tipo) throws PessoaExcecao{
 		if(nomeCompleto != null && cpf > 0 && telefone > 0) {
 			this.setNomeCompleto( nomeCompleto);
 			this.setDataNascimento(00, 00, 0000);
@@ -50,7 +50,7 @@ public abstract class Pessoa implements Serializable{
 	}
 	
 	
-	public Pessoa(String nomeCompleto, int dia, int mes, int ano, long cpf, int telefone, String tipo)  throws PessoaExcecao{
+	public Pessoa(String nomeCompleto, int dia, int mes, int ano, long cpf, long telefone, String tipo)  throws PessoaExcecao{
 		if(nomeCompleto != null && cpf > 0 && telefone > 0) {
 			this.setNomeCompleto( nomeCompleto);
 			this.setDataNascimento(dia, mes, ano);
@@ -62,7 +62,7 @@ public abstract class Pessoa implements Serializable{
 		} else throw new PessoaExcecao(nomeCompleto, cpf, telefone);
 	}
 	
-	public Pessoa(String nomeCompleto, long cpf, int telefone, String tipo) throws PessoaExcecao{
+	public Pessoa(String nomeCompleto, long cpf, long telefone, String tipo) throws PessoaExcecao{
 		if(nomeCompleto != null && cpf > 0 && telefone > 0) {
 			this.setNomeCompleto( nomeCompleto);
 			this.setDataNascimento(00, 00, 0000);
@@ -80,7 +80,7 @@ public abstract class Pessoa implements Serializable{
 	}
 
 
-	private void setTelefone(int telefone) {
+	private void setTelefone(long telefone) {
 		this.telefone = telefone;
 	}
 
@@ -118,11 +118,11 @@ public abstract class Pessoa implements Serializable{
 		
 		 
 		if(enderecoEstado!=null) 
-			endereco = endereco + enderecoEstado;
+			endereco = endereco +  ", " + enderecoEstado;
 		 else endereco = endereco + "MG, ";
 		
 		if(enderecoPais!=null) 
-			endereco = endereco + enderecoPais;
+			endereco = endereco +  ", " + enderecoPais;
 		 else endereco = endereco + "Brasil"; 
 		 
 		this.endereco = endereco;
@@ -148,7 +148,7 @@ public abstract class Pessoa implements Serializable{
 	}
 
 
-	public int getTelefone() {
+	public long getTelefone() {
 		return this.telefone;
 	}
 
@@ -172,37 +172,32 @@ public abstract class Pessoa implements Serializable{
 	}
 
 	public void cadastrarPessoa() {
-		/*
-		Conexao conectar = null;
-		try{
-			conectar = new Conexao();
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}finally{
-			if(conectar != null) {
-				conectar.fecharConexao();
-			}		
-		}
-		Connection con = conectar.getConexao();
-		 final String inserirPessoa = "INSERT INTO pessoa(cpf, nome_completo, data_nascimento, endereco,telefone) VALUES (?, ?, ?, ?, ?)";
 		
+		Conexao conectar = new Conexao();
+		Connection con = conectar.getConexao();
+		//System.out.println(con.toString());
+		
+		String inserirPessoa = "INSERT INTO pessoa(cpf, nome_completo, endereco, telefone, data_nascimento) VALUES (?, ?, ?, ?, ?)";
+		//System.out.println("\nIniciou o inserir: " + inserirPessoa);
 		try{
-			 PreparedStatement stmInserirPessoa = con.prepareStatement(inserirPessoa);
+			PreparedStatement stmInserirPessoa = con.prepareStatement(inserirPessoa);
+			
 			//Montando os valores
 			//cpf:
-			stmInserirPessoa.setLong(1, this.cpf);
+			stmInserirPessoa.setLong(1, getCpf());
 			//nome:
-			stmInserirPessoa.setString(2, this.nomeCompleto);
+			stmInserirPessoa.setString(2, getNomeCompleto());
 			//endereco:
-			stmInserirPessoa.setString(3, this.endereco);
-			//data de nascimento:
-			stmInserirPessoa.setString(4, this.dataNascimento);
+			stmInserirPessoa.setString(3, getEndereco());
 			//telefone
-			stmInserirPessoa.setInt(5, this.telefone);
-			int row = stmInserirPessoa.executeUpdate();
+			stmInserirPessoa.setLong(4, getTelefone());
+			//data de nascimento:
+			stmInserirPessoa.setString(5, getDataNascimento());
+			
 			//Aqui ocorre o registro: 
-			//stmInserirPessoa.executeUpdate();
-			System.out.println("Insercao executada corretamente!" + row);
+			//System.out.println(stmInserirPessoa.toString());
+			stmInserirPessoa.executeQuery();
+
 		}catch (SQLException e) {
 			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
 			e.printStackTrace();
@@ -224,7 +219,7 @@ public abstract class Pessoa implements Serializable{
 				}
 			}
 		}
-		*/
+		
 	}
 
 	public void editarPessoa() {
@@ -235,21 +230,15 @@ public abstract class Pessoa implements Serializable{
 
 	}
 
-	public void pesquisarPessoa(long cpf) {
-		/*
-		Conexao conectar = null;
-		try{
-			conectar = new Conexao();
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
-		finally{
-			if(conectar != null)
-				conectar.fecharConexao();
-		}
+	public static void pesquisarPessoa(long cpf) {
+		
+		Conexao conectar = new Conexao();
 		Connection con = conectar.getConexao();
-		String pesquisarPessoa = "SELECT cpf, nome_completo,telefone, endereco FROM pessoa " +
-					"WHERE cpf = ?;";
+		//System.out.println(con.toString());
+		
+		String pesquisarPessoa = "SELECT cpf, nome_completo, endereco, telefone FROM pessoa " +
+					"WHERE cpf = ?";
+		System.out.println( "\n\nPesquisar: " + pesquisarPessoa);
 		
 		try {
 			ResultSet resultado = null;
@@ -261,23 +250,26 @@ public abstract class Pessoa implements Serializable{
 			resultado = stmPesquisarPessoa.executeQuery();
 			int iCpf = 1; 
 			int iNome = 2;
-			int iTelefone = 3;
-			int iEndereco = 4;
+			int iEndereco = 3;
+			int iTelefone = 4;
+			
 			int conta = 0;
+			
 			if(resultado != null){
+				
 				while(resultado.next()){
-					System.out.println("Nome: " + resultado.getString(iNome) + "CPF: " + resultado.getObject(iCpf)+
-							"Telefone: " + resultado.getObject(iTelefone) + "Endereço: " + 
-							resultado.getObject(iEndereco));
+					System.out.println( "\nCPF: " + resultado.getObject(iCpf)+ "\nNome: " + resultado.getString(iNome) + 
+							"\nEndereço: " + resultado.getString(iEndereco) + "\nTelefone: " + resultado.getObject(iTelefone) );
 					conta++;
 				}
+				
 				System.out.println(conta);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			if(con != null){
 				try{
-					System.err.print("Falha transacao em Rollback!!!!");
+					System.err.print("Falha na pesquisa: ");
 					con.rollback();
 				}catch(SQLException sqlE){
 					sqlE.printStackTrace();
@@ -294,7 +286,7 @@ public abstract class Pessoa implements Serializable{
 				}
 			}
 		}
-		*/
+		
 	}
 	
 	public String toString() {
