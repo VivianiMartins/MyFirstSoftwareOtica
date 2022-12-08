@@ -23,36 +23,58 @@ import serializacao.Serializador;
 public class App {
 	
 	public static void main(String[] args) {
-		/*
-		//teste de Pessoa		
+		
+		//teste Pessoas com BD
 		FactoryPessoa fabricaDePessoas = new FactoryPessoa();
-		//pessoa01 - teste das excepitions
-		/*Cliente pessoa01 = (Cliente)fabricaDePessoas.setPessoa(null, 8, 11, 1987, 01132354121, "Vila do Chaves", "31", "casa", "Acapulco", "75300-000",
-				"Anapolis", "GO", "Brasil",1225544, "Cliente", false);
-		System.out.println("Dados da Pessoa: " + pessoa01);
-		*/
 		/*
-		Funcionario pessoa02 = (Funcionario)fabricaDePessoas.setPessoa("Teste dois de cadastro", 19, 1, 1986, 01132354121,"Vila do Chaves", "31", "casa", "Acapulco", "75300-000",
-				"Anapolis", "GO", "Brasil", 1221214, 29, 10, 2022, "1547866Senha", "loginSeralogin", true);
-		Cliente cliente = (Cliente)fabricaDePessoas.setPessoa("João da Silva", 8, 11, 1987, 01132354121, "Vila do Chaves", "31", "casa", "Acapulco", "75300-000",
-				"Anapolis", "GO", "Brasil",1225544, "Cliente", false);
-		
-		
-		System.out.println("\nDados da 2ª Pessoa: " + pessoa02);
-		
-		*/
-		
-		//teste do BD com metodos da pessoa
-		FactoryPessoa fabricaDePessoas = new FactoryPessoa();
-		
+		//teste do BD com metodos de cliente
 		//teste Insert:
-		Cliente clienteBD = (Cliente)fabricaDePessoas.setPessoa("Joana da Silva", 8, 11, 1987, 05632354121, "Vila do Chaves", "31", "casa", "Acapulco", "75300-000",
+		Cliente clienteBD = (Cliente)fabricaDePessoas.setPessoa("Caio de Abreu", 5, 8, 1999, (long)0632555111, "Vila do Chaves", "31", "casa", "Acapulco", "75300-000",
 				"Anapolis", "GO", "Brasil",1225544, "Cliente", false);
 		System.out.println("\ncliente BD: " + clienteBD);
-		//clienteBD.cadastrarPessoa();
+		//clienteBD.cadastrarCliente();
 		
 		//teste procura com CPF:
-		//Cliente.pesquisarPessoa(1234567891);
+		//Cliente.pesquisarCliente((long)644536402);
+		
+		//teste edição por CPF:
+		Cliente clienteEditar = (Cliente)fabricaDePessoas.setPessoa("Valeria Rosana Almeida", 4, 1, 1975, (long)644536402, "Vila do Chaves", "31", "casa", "Acapulco", "75300-000",
+				"Anapolis", "GO", "Brasil",1225544, "Cliente", true);
+		System.out.println("\ncliente Editar: " + clienteEditar);
+		//clienteEditar.editarCliente();
+		
+		//teste excluir pelo CPF:
+		//Cliente.excluirCliente((long)1132354121);
+		*/
+		/*
+		//teste do BD com metodos do funcionario
+		//teste Insert:
+		Funcionario funcionarioBD = (Funcionario)fabricaDePessoas.setPessoa("Vanuza Botelho", 5, 10, 1977, (long)874964126,"Vila do Chaves", "31", "casa", "Acapulco", "75300-000",
+				"Anapolis", "GO", "Brasil", 1221214, 29, 10, 2022, "1547866Senha", true);
+		System.out.println("\nFuncionario BD: " + funcionarioBD);
+		//funcionarioBD.cadastrarFuncionario();
+				
+		//teste procura com CPF:
+		//Funcionario.pesquisarFuncionario((long)874964126);
+				
+		//teste edição por CPF:
+		Funcionario funcionarioEditar = (Funcionario)fabricaDePessoas.setPessoa("Maria Jose de Assis", 5, 10, 1977, (long)874964126,"Vila do Chaves", "31", "casa", "Acapulco", "75300-000",
+				"Anapolis", "GO", "Brasil", 1221214, 29, 10, 2022, "123456", true);
+		System.out.println("\nFuncionario BD: " + funcionarioEditar);
+		//funcionarioEditar.editarFuncionario();
+		*/
+		
+		/*
+		//teste para o login:
+		boolean entrar = false;
+		entrar = Funcionario.fazerLogin((long)874964126, "123456");
+		System.out.println( "\nEntrar? " + entrar);
+		if(entrar == true) {
+			System.out.println("Bem vindx!");
+		}else {
+			System.out.println("Login ou senha incorretos");
+		}*/
+	
 		
 		/*
 		//Testes do estoque		

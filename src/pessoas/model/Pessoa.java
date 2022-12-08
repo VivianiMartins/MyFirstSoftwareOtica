@@ -26,7 +26,7 @@ public abstract class Pessoa implements Serializable{
 		if(nomeCompleto != null && cpf > 0 && telefone > 0) {
 			this.setNomeCompleto( nomeCompleto);
 			this.setDataNascimento( dia, mes, ano);
-			this.setCpf(cpf);
+			this.setCpf((long)cpf);
 			this.setEndereco(enderecoRua, enderecoNumero, enderecoComplemento, enderecoBairro, 
 					enderecoCep, enderecoCidade, enderecoEstado,  enderecoPais);
 			this.setTelefone(telefone);
@@ -41,7 +41,7 @@ public abstract class Pessoa implements Serializable{
 		if(nomeCompleto != null && cpf > 0 && telefone > 0) {
 			this.setNomeCompleto( nomeCompleto);
 			this.setDataNascimento(00, 00, 0000);
-			this.setCpf(cpf);
+			this.setCpf((long)cpf);
 			this.setEndereco(enderecoRua, enderecoNumero, enderecoComplemento, enderecoBairro, 
 					enderecoCep, enderecoCidade, enderecoEstado,  enderecoPais);
 			this.setTelefone(telefone);
@@ -54,7 +54,7 @@ public abstract class Pessoa implements Serializable{
 		if(nomeCompleto != null && cpf > 0 && telefone > 0) {
 			this.setNomeCompleto( nomeCompleto);
 			this.setDataNascimento(dia, mes, ano);
-			this.setCpf(cpf);
+			this.setCpf((long)cpf);
 			this.setEndereco(null, null, null, null, 
 					null, null, null,  null);
 			this.setTelefone(telefone);
@@ -66,7 +66,7 @@ public abstract class Pessoa implements Serializable{
 		if(nomeCompleto != null && cpf > 0 && telefone > 0) {
 			this.setNomeCompleto( nomeCompleto);
 			this.setDataNascimento(00, 00, 0000);
-			this.setCpf(cpf);
+			this.setCpf((long)cpf);
 			this.setEndereco(null, null, null, null, 
 					null, null, null,  null);
 			this.setTelefone(telefone);
@@ -184,15 +184,15 @@ public abstract class Pessoa implements Serializable{
 			
 			//Montando os valores
 			//cpf:
-			stmInserirPessoa.setLong(1, getCpf());
+			stmInserirPessoa.setLong(1, this.getCpf());
 			//nome:
-			stmInserirPessoa.setString(2, getNomeCompleto());
+			stmInserirPessoa.setString(2, this.getNomeCompleto());
 			//endereco:
-			stmInserirPessoa.setString(3, getEndereco());
+			stmInserirPessoa.setString(3, this.getEndereco());
 			//telefone
-			stmInserirPessoa.setLong(4, getTelefone());
+			stmInserirPessoa.setLong(4, this.getTelefone());
 			//data de nascimento:
-			stmInserirPessoa.setString(5, getDataNascimento());
+			stmInserirPessoa.setString(5, this.getDataNascimento());
 			
 			//Aqui ocorre o registro: 
 			//System.out.println(stmInserirPessoa.toString());
@@ -223,11 +223,91 @@ public abstract class Pessoa implements Serializable{
 	}
 
 	public void editarPessoa() {
+		Conexao conectar = new Conexao();
+		Connection con = conectar.getConexao();
+		System.out.println(con.toString());
+		
+		String editarPessoa = "UPDATE pessoa SET nome_completo = ?, endereco = ?, telefone = ?, data_nascimento = ? WHERE cpf = "+ this.getCpf() ;
+		//System.out.println("\nIniciou: " + editarPessoa);
+		try{
+			PreparedStatement stmEditarPessoa = con.prepareStatement(editarPessoa);
+			
+			//Montando os valores
+			//nome:
+			stmEditarPessoa.setString(1, this.getNomeCompleto());
+			//endereco:
+			stmEditarPessoa.setString(2, this.getEndereco());
+			//telefone
+			stmEditarPessoa.setLong(3, this.getTelefone());
+			//data de nascimento:
+			stmEditarPessoa.setString(4, this.getDataNascimento());
+			
+			//Aqui ocorre o registro: 
+			//System.out.println(stmEditarPessoa.toString());
+			stmEditarPessoa.executeUpdate();
 
+		}catch (SQLException e) {
+			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+			e.printStackTrace();
+			if(con != null){
+				try{
+					System.err.print("Falha na edicao!");
+					con.close();
+				}catch(SQLException sqlE){
+					sqlE.printStackTrace();
+				}
+			}
+		}
+		finally{
+			if(con != null){
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
-	public void excluirPessoa() {
-
+	public static void excluirPessoa(long cpf) {
+		Conexao conectar = new Conexao();
+		Connection con = conectar.getConexao();
+		//System.out.println(con.toString());
+		
+		String excluirPessoa = "DELETE FROM pessoa WHERE cpf = ?";
+		//System.out.println(excluirPessoa);
+		try{
+			PreparedStatement stmExcluirPessoa = con.prepareStatement(excluirPessoa);
+			
+			//Montando os valores
+			//cpf:
+			stmExcluirPessoa.setLong(1, cpf);
+			
+			//Aqui ocorre o registro: 
+			//System.out.println(stmExcluirPessoa.toString());
+			stmExcluirPessoa.executeUpdate();
+			
+		}catch (SQLException e) {
+			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+			e.printStackTrace();
+			if(con != null){
+				try{
+					System.err.print("Falha na exclusao!");
+					con.close();
+				}catch(SQLException sqlE){
+					sqlE.printStackTrace();
+				}
+			}
+		}
+		finally{
+			if(con != null){
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
 	public static void pesquisarPessoa(long cpf) {
@@ -238,16 +318,17 @@ public abstract class Pessoa implements Serializable{
 		
 		String pesquisarPessoa = "SELECT cpf, nome_completo, endereco, telefone FROM pessoa " +
 					"WHERE cpf = ?";
-		System.out.println( "\n\nPesquisar: " + pesquisarPessoa);
+		//System.out.println( "\n\nPesquisar: " + pesquisarPessoa);
 		
 		try {
 			ResultSet resultado = null;
 			PreparedStatement stmPesquisarPessoa = con.prepareStatement(pesquisarPessoa);
 		
 			stmPesquisarPessoa.setLong(1, cpf);
-			System.out.println(stmPesquisarPessoa.toString());
+			//System.out.println(stmPesquisarPessoa.toString());
 				
 			resultado = stmPesquisarPessoa.executeQuery();
+			
 			int iCpf = 1; 
 			int iNome = 2;
 			int iEndereco = 3;
@@ -263,13 +344,14 @@ public abstract class Pessoa implements Serializable{
 					conta++;
 				}
 				
-				System.out.println(conta);
+				//System.out.println(conta);
 			}
 		} catch (SQLException e) {
+			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
 			e.printStackTrace();
 			if(con != null){
 				try{
-					System.err.print("Falha na pesquisa: ");
+					System.err.print("Falha na pesquisa");
 					con.rollback();
 				}catch(SQLException sqlE){
 					sqlE.printStackTrace();
@@ -286,7 +368,6 @@ public abstract class Pessoa implements Serializable{
 				}
 			}
 		}
-		
 	}
 	
 	public String toString() {
