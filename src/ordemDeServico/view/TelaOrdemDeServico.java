@@ -19,6 +19,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
+import ordemDeServico.controller.OrdemDeServicoController;
 import pesquisa.view.TelaPesquisa;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
@@ -33,15 +34,31 @@ public class TelaOrdemDeServico extends JFrame {
 	private JTextField textFieldTelefone;
 	private JTextField textFieldPreco;
 	private JTextField textField;
+	
+	private JButton btnPesquisarTela;
+	private JButton btnNovoCliente;
+	private JButton btnNovaOrdem;
+	//botões para clientes
+	private JButton btnAdicionarNovo;
+	private JButton btnPesquisar;
+	//pesuisar armaçao
+	private JButton btnPesquisarArmacao;
+	//pesquisar lente
+	private JButton btnPesquisarLente;
+	//adicionar nova receita
+	private JButton btnAdicionarReceita;
+	//avançar quando gera o documento
+	private JButton btnAvancar;
+	//cancelar
+	private JButton btnCancelar;
 
-	/**
-	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					TelaOrdemDeServico frame = new TelaOrdemDeServico();
+					OrdemDeServicoController controles = new OrdemDeServicoController(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,12 +67,10 @@ public class TelaOrdemDeServico extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public TelaOrdemDeServico() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaOrdemDeServico.class.getResource("/imagens/icon.png")));
-getContentPane().setBackground(new Color(229, 229, 229));
+		getContentPane().setBackground(new Color(229, 229, 229));
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024, 800);
@@ -69,34 +84,21 @@ getContentPane().setBackground(new Color(229, 229, 229));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setIcon(new ImageIcon(TelaPesquisa.class.getResource("/imagens/logo.png")));
 		
-		JButton btnPesquisarTela = new JButton("Pesquisar");
-		btnPesquisarTela.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		
+		btnPesquisarTela = new JButton("Pesquisar");
 		btnPesquisarTela.setFont(new Font("Roboto", Font.PLAIN, 18));
 		btnPesquisarTela.setForeground(Color.WHITE);
 		btnPesquisarTela.setBackground(new Color(200, 50, 43));
 		btnPesquisarTela.setContentAreaFilled(false);
 	    btnPesquisarTela.setOpaque(true);
 		
-		JButton btnNovoCliente = new JButton("Novo cliente");
-		btnNovoCliente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnNovoCliente = new JButton("Novo cliente");
 		btnNovoCliente.setForeground(Color.WHITE);
 		btnNovoCliente.setFont(new Font("Roboto", Font.PLAIN, 18));
 		btnNovoCliente.setBackground(new Color(200, 50, 43));
 		btnNovoCliente.setContentAreaFilled(false);
 	    btnNovoCliente.setOpaque(true);
 		
-		JButton btnNovaOrdem = new JButton("Nova ordem");
-		btnNovaOrdem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnNovaOrdem = new JButton("Nova ordem");
 		btnNovaOrdem.setForeground(Color.WHITE);
 		btnNovaOrdem.setFont(new Font("Roboto", Font.PLAIN, 18));
 		btnNovaOrdem.setBackground(new Color(200, 50, 43));
@@ -157,15 +159,15 @@ getContentPane().setBackground(new Color(229, 229, 229));
 		
 		JLabel lblCliente = new JLabel("Cliente*");
 		lblCliente.setFont(new Font("Roboto", Font.PLAIN, 18));
-		
-		JButton btnAdicionarNovo = new JButton("Adicionar novo");
+
+		btnAdicionarNovo = new JButton("Adicionar novo");
 		btnAdicionarNovo.setForeground(Color.WHITE);
 		btnAdicionarNovo.setFont(new Font("Roboto", Font.PLAIN, 18));
 		btnAdicionarNovo.setContentAreaFilled(false);
 		btnAdicionarNovo.setBackground(new Color(122, 122, 122));
 		btnAdicionarNovo.setOpaque(true);
 		
-		JButton btnPesquisar = new JButton("Pesquisar");
+		btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.setForeground(Color.WHITE);
 		btnPesquisar.setFont(new Font("Roboto", Font.PLAIN, 18));
 		btnPesquisar.setContentAreaFilled(false);
@@ -192,7 +194,7 @@ getContentPane().setBackground(new Color(229, 229, 229));
 		JLabel lblArmacao = new JLabel("Armação:");
 		lblArmacao.setFont(new Font("Roboto", Font.PLAIN, 18));
 		
-		JButton btnPesquisarArmacao = new JButton("Pesquisar");
+		btnPesquisarArmacao = new JButton("Pesquisar");
 		btnPesquisarArmacao.setForeground(Color.WHITE);
 		btnPesquisarArmacao.setFont(new Font("Roboto", Font.PLAIN, 18));
 		btnPesquisarArmacao.setContentAreaFilled(false);
@@ -209,7 +211,7 @@ getContentPane().setBackground(new Color(229, 229, 229));
 		JLabel lblLente = new JLabel("Lente:");
 		lblLente.setFont(new Font("Roboto", Font.PLAIN, 18));
 		
-		JButton btnPesquisarLente = new JButton("Pesquisar");
+		btnPesquisarLente = new JButton("Pesquisar");
 		btnPesquisarLente.setForeground(Color.WHITE);
 		btnPesquisarLente.setFont(new Font("Roboto", Font.PLAIN, 18));
 		btnPesquisarLente.setContentAreaFilled(false);
@@ -223,21 +225,21 @@ getContentPane().setBackground(new Color(229, 229, 229));
 		JLabel lblPreco_1 = new JLabel("Preço");
 		lblPreco_1.setFont(new Font("Roboto", Font.PLAIN, 18));
 		
-		JButton btnAdicionarReceita = new JButton("Adicionar Receita");
+		btnAdicionarReceita = new JButton("Adicionar Receita");
 		btnAdicionarReceita.setForeground(Color.WHITE);
 		btnAdicionarReceita.setFont(new Font("Roboto", Font.PLAIN, 18));
 		btnAdicionarReceita.setContentAreaFilled(false);
 		btnAdicionarReceita.setBackground(new Color(200, 50, 43));
 		btnAdicionarReceita.setOpaque(true);
 		
-		JButton btnAvancar = new JButton("Avançar");
+		btnAvancar = new JButton("Avançar");
 		btnAvancar.setForeground(Color.WHITE);
 		btnAvancar.setFont(new Font("Roboto", Font.PLAIN, 18));
 		btnAvancar.setContentAreaFilled(false);
 		btnAvancar.setBackground(new Color(200, 50, 43));
 		btnAvancar.setOpaque(true);
 		
-		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setForeground(Color.WHITE);
 		btnCancelar.setFont(new Font("Roboto", Font.PLAIN, 18));
 		btnCancelar.setContentAreaFilled(false);
@@ -345,5 +347,142 @@ getContentPane().setBackground(new Color(229, 229, 229));
 		panel_1.setLayout(gl_panel_1);
 		getContentPane().setLayout(groupLayout);
 	}
-}
+	
+	public JTextField getTextFieldNomeCompleto() {
+		return textFieldNomeCompleto;
+	}
 
+
+	public JTextField getTextFieldTelefone() {
+		return textFieldTelefone;
+	}
+
+
+	public JTextField getTextFieldPreco() {
+		return textFieldPreco;
+	}
+
+
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	
+	public void setTextFieldNomeCompleto(JTextField textFieldNomeCompleto) {
+		this.textFieldNomeCompleto = textFieldNomeCompleto;
+	}
+
+	public void setTextFieldTelefone(JTextField textFieldTelefone) {
+		this.textFieldTelefone = textFieldTelefone;
+	}
+
+
+	public void setTextFieldPreco(JTextField textFieldPreco) {
+		this.textFieldPreco = textFieldPreco;
+	}
+
+
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
+	}
+
+
+	public JButton getBtnPesquisarTela() {
+		return btnPesquisarTela;
+	}
+
+
+	public void setBtnPesquisarTela(JButton btnPesquisarTela) {
+		this.btnPesquisarTela = btnPesquisarTela;
+	}
+
+
+	public JButton getBtnNovoCliente() {
+		return btnNovoCliente;
+	}
+
+
+	public void setBtnNovoCliente(JButton btnNovoCliente) {
+		this.btnNovoCliente = btnNovoCliente;
+	}
+
+
+	public JButton getBtnNovaOrdem() {
+		return btnNovaOrdem;
+	}
+
+
+	public void setBtnNovaOrdem(JButton btnNovaOrdem) {
+		this.btnNovaOrdem = btnNovaOrdem;
+	}
+
+
+	public JButton getBtnAdicionarNovo() {
+		return btnAdicionarNovo;
+	}
+
+
+	public void setBtnAdicionarNovo(JButton btnAdicionarNovo) {
+		this.btnAdicionarNovo = btnAdicionarNovo;
+	}
+
+
+	public JButton getBtnPesquisar() {
+		return btnPesquisar;
+	}
+
+
+	public void setBtnPesquisar(JButton btnPesquisar) {
+		this.btnPesquisar = btnPesquisar;
+	}
+
+
+	public JButton getBtnPesquisarArmacao() {
+		return btnPesquisarArmacao;
+	}
+
+
+	public void setBtnPesquisarArmacao(JButton btnPesquisarArmacao) {
+		this.btnPesquisarArmacao = btnPesquisarArmacao;
+	}
+
+
+	public JButton getBtnPesquisarLente() {
+		return btnPesquisarLente;
+	}
+
+
+	public void setBtnPesquisarLente(JButton btnPesquisarLente) {
+		this.btnPesquisarLente = btnPesquisarLente;
+	}
+
+
+	public JButton getBtnAdicionarReceita() {
+		return btnAdicionarReceita;
+	}
+
+
+	public void setBtnAdicionarReceita(JButton btnAdicionarReceita) {
+		this.btnAdicionarReceita = btnAdicionarReceita;
+	}
+
+
+	public JButton getBtnAvancar() {
+		return btnAvancar;
+	}
+
+
+	public void setBtnAvancar(JButton btnAvancar) {
+		this.btnAvancar = btnAvancar;
+	}
+
+
+	public JButton getBtnCancelar() {
+		return btnCancelar;
+	}
+
+
+	public void setBtnCancelar(JButton btnCancelar) {
+		this.btnCancelar = btnCancelar;
+	}
+}

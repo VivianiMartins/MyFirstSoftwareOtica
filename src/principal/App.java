@@ -46,6 +46,8 @@ public class App {
 		//teste excluir pelo CPF:
 		//Cliente.excluirCliente((long)1132354121);
 		*/
+		
+		
 		/*
 		//teste do BD com metodos do funcionario
 		//teste Insert:
@@ -63,6 +65,7 @@ public class App {
 		System.out.println("\nFuncionario BD: " + funcionarioEditar);
 		//funcionarioEditar.editarFuncionario();
 		*/
+		
 		
 		/*
 		//teste para o login:
@@ -100,7 +103,7 @@ public class App {
 		
 		
 		//Testes da Ordem de Serviço
-		float desconto = (float) 2.00 ;
+		float desconto = 2.00 ;
 		float valorTotal = produto.getPrecoDeVenda();
 		
 		OrdemDeServico nova = new OrdemDeServico("Andamento", valorTotal, desconto, "cartão 5X", "filho de fulana", 
@@ -115,7 +118,7 @@ public class App {
 		/*
 		System.out.println("\n\nSerializador"); 
 		Serializador s = new Serializador();
-		//Leandro criei ess string p gerar o nome do arwuivo
+		//Leandro criei ess string p gerar o nome do arquivo
 		String nomeObj = "Ordem" + nova.getNumero();
 		try { 
 			  s.serializar("./" + nomeObj + ".obj " , nova);

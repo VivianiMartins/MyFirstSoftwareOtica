@@ -16,7 +16,7 @@ public class OrdemDeServico implements Serializable{
 	
 	static private int numero;
 	private String status;
-	private float valorTotal;
+	private double valorTotal;
 	private String formaPagamento;
 	private String observacoes;
 	private String dataVenda;
@@ -36,7 +36,7 @@ public class OrdemDeServico implements Serializable{
 	//Associação - composição:
 	private Funcionario funcionario;
 	
-	public OrdemDeServico(String status, float valorTotal, float desconto, String formaPagamento, String observacoes, 
+	public OrdemDeServico(String status, double valorTotal, double desconto, String formaPagamento, String observacoes, 
 			int diaVenda, int mesVenda, int anoVenda, Cliente cliente, Receita receita ,Unidade unidade, Produto produtos,
 			Armacao armacao, Lente lente, Funcionario funcionario) {
 		this.setNumero();
@@ -54,7 +54,7 @@ public class OrdemDeServico implements Serializable{
 		this.setFuncionario(funcionario);
 	}
 	
-	public OrdemDeServico(String status, float valorTotal, float desconto, String formaPagamento, String observacoes, 
+	public OrdemDeServico(String status, double valorTotal, double desconto, String formaPagamento, String observacoes, 
 			int diaVenda, int mesVenda, int anoVenda, Cliente cliente, Unidade unidade, Produto produtos,
 			Armacao armacao, Lente lente, Funcionario funcionario) {
 		this.setNumero();
@@ -71,7 +71,7 @@ public class OrdemDeServico implements Serializable{
 		this.setFuncionario(funcionario);
 	}
 	
-	public OrdemDeServico(String status, float valorTotal, float desconto, String formaPagamento, String observacoes, 
+	public OrdemDeServico(String status, double valorTotal, double desconto, String formaPagamento, String observacoes, 
 			int diaVenda, int mesVenda, int anoVenda, Cliente cliente ,Unidade unidade, Produto produtos,
 			Armacao armacao, Funcionario funcionario) {
 		this.setNumero();
@@ -87,7 +87,7 @@ public class OrdemDeServico implements Serializable{
 		this.setFuncionario(funcionario);
 	}
 	
-	public OrdemDeServico(String status, float valorTotal, float desconto, String formaPagamento, String observacoes, 
+	public OrdemDeServico(String status, double valorTotal, double desconto, String formaPagamento, String observacoes, 
 			int diaVenda, int mesVenda, int anoVenda, Cliente cliente, Receita receita ,Unidade unidade,
 			Armacao armacao, Lente lente, Funcionario funcionario) {
 		this.setNumero();
@@ -104,7 +104,7 @@ public class OrdemDeServico implements Serializable{
 		this.setFuncionario(funcionario);
 	}
 	
-	public OrdemDeServico(String status, float valorTotal, float desconto, String formaPagamento, String observacoes, 
+	public OrdemDeServico(String status, double valorTotal, double desconto, String formaPagamento, String observacoes, 
 			int diaVenda, int mesVenda, int anoVenda, Cliente cliente, Receita receita ,Unidade unidade,
 			 Lente lente, Funcionario funcionario) {
 		this.setNumero();
@@ -120,7 +120,7 @@ public class OrdemDeServico implements Serializable{
 		this.setFuncionario(funcionario);
 	}
 	
-	public OrdemDeServico(String status, float valorTotal, float desconto, String formaPagamento, String observacoes, 
+	public OrdemDeServico(String status, double valorTotal, double desconto, String formaPagamento, String observacoes, 
 			int diaVenda, int mesVenda, int anoVenda, Cliente cliente, Receita receita ,Unidade unidade, Produto produtos,
 			Funcionario funcionario) {
 		this.setNumero();
@@ -136,7 +136,7 @@ public class OrdemDeServico implements Serializable{
 		this.setFuncionario(funcionario);
 	}
 	
-	public OrdemDeServico(String status, float valorTotal, float desconto, String formaPagamento, String observacoes, 
+	public OrdemDeServico(String status, double valorTotal, double desconto, String formaPagamento, String observacoes, 
 			int diaVenda, int mesVenda, int anoVenda, Cliente cliente, Unidade unidade, Produto produtos,
 			 Funcionario funcionario) {
 		this.setNumero();
@@ -160,7 +160,7 @@ public class OrdemDeServico implements Serializable{
 		this.status = status;
 	}
 	
-	private void setValorTotal(float valorTotal, float desconto) {
+	private void setValorTotal(double valorTotal, double desconto) {
 		this.valorTotal = valorTotal-desconto;
 	}
 	
@@ -220,7 +220,7 @@ public class OrdemDeServico implements Serializable{
 		return this.status;
 	}
 	
-	public float getValorTotal() {
+	public double getValorTotal() {
 		return this.valorTotal;
 	}
 	

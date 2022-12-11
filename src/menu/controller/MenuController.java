@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import menu.view.TelaMenu;
 import ordemDeServico.view.TelaOrdemDeServico;
+import ordemDeServico.view.TelaOrdemDeServico;
 import pesquisa.view.TelaPesquisa;
 import pessoas.view.TelaNovoCliente;
 
@@ -14,7 +15,7 @@ public class MenuController implements ActionListener {
 		this.menu = menu;
 		menu.getBtnPesquisarTela().addActionListener(e -> abrirTelaPesquisar());
 		menu.getBtnNovoCliente().addActionListener(e -> abrirTelaNovoCliente());
-		menu.getBtnNovoCliente().addActionListener(e -> abrirTelaOrdemDeServico());
+		menu.getBtnNovaOrdem().addActionListener(e -> abrirTelaOrdemDeServico());
 	}
 	
 	public void abrirTelaPesquisar() {

@@ -1,18 +1,18 @@
 package menu.view;
 
-	import java.awt.EventQueue;
-	import javax.swing.JFrame;
-	import javax.swing.JPanel;
-	import javax.swing.GroupLayout;
-	import javax.swing.GroupLayout.Alignment;
-	import javax.swing.JLabel;
-	import javax.swing.ImageIcon;
-	import java.awt.Color;
-	import javax.swing.JButton;
-	import javax.swing.SwingConstants;
-	import java.awt.Font;
-	import java.awt.Toolkit;
-	import menu.controller.MenuController;
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import java.awt.Color;
+import javax.swing.JButton;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.awt.Toolkit;
+import menu.controller.MenuController;
 	
 import javax.swing.LayoutStyle.ComponentPlacement;
 	
@@ -127,7 +127,8 @@ public class TelaMenu extends JFrame{
 					.addContainerGap()
 					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(btnPesquisarTela, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)						.addGap(18)
+					.addComponent(btnPesquisarTela, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)						
+					.addGap(18)
 				.addComponent(btnNovoCliente, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
 				.addGap(18)
 				.addComponent(btnNovaOrdem, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
