@@ -24,6 +24,19 @@ public class FactoryPessoa {
 		}
 	}
 	
+	public Cliente setPessoa(String nomeCompleto, String DataNascimento, long cpf, 
+			String enderecoRua, String enderecoNumero, String enderecoComplemento, 
+			String enderecoCep, String enderecoCidade, String enderecoEstado, long telefone, String tipo, boolean spc) {
+		try {
+			return new Cliente(nomeCompleto, DataNascimento, (long)cpf, 
+					enderecoRua, enderecoNumero, enderecoComplemento, 
+					enderecoCep, enderecoCidade, enderecoEstado, (long)telefone, tipo, spc);
+		}catch (PessoaExcecao e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(),"Erro", JOptionPane.ERROR_MESSAGE);
+			return null;
+		}
+	}
+	
 	public Funcionario setPessoa(String nomeCompleto, int dia, int mes, int ano, long cpf,
 			String enderecoRua, String enderecoNumero, String enderecoComplemento, String enderecoBairro, 
 			String enderecoCep, String enderecoCidade, String enderecoEstado,  String enderecoPais,

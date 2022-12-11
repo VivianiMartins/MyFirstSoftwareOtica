@@ -136,19 +136,14 @@ public class OrdemDeServico implements Serializable{
 		this.setFuncionario(funcionario);
 	}
 	
-	public OrdemDeServico(String status, double valorTotal, double desconto, String formaPagamento, String observacoes, 
-			int diaVenda, int mesVenda, int anoVenda, Cliente cliente, Unidade unidade, Produto produtos,
-			 Funcionario funcionario) {
+	public OrdemDeServico(String status, double valorTotal, String observacoes, 
+			 Cliente cliente, Armacao armacao, Lente lente) {
 		this.setNumero();
 		this.setStatus(status);
-		this.setValorTotal(valorTotal, desconto);	
+		this.setValorTotal(valorTotal, 0.0);	
 		this.setFormaPagamento(formaPagamento);
 		this.setObservacoes(observacoes);
-		this.setDataVenda(diaVenda, mesVenda, anoVenda);
 		this.setCliente(cliente);
-		this.setUnidade(unidade);
-		this.setProduto(produtos);
-		this.setFuncionario(funcionario);
 	}
 	
 	//após uma nova ordem de serviço ser criada este método deve ser chamado:

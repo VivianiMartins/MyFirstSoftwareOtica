@@ -18,7 +18,9 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
+import ordemDeServico.controller.OrdemDeServicoController;
 import pesquisa.view.TelaPesquisa;
+import pessoas.controller.TelaNovoClienteController;
 
 import javax.swing.JRadioButton;
 import java.awt.Toolkit;
@@ -26,6 +28,11 @@ import java.awt.Toolkit;
 public class TelaNovoCliente extends JFrame {
 
 	private JPanel contentPane;
+	//botoes menu
+	private JButton btnPesquisarTela;
+	private JButton btnNovoCliente;
+	private JButton btnNovaOrdem;
+	//campos de texto
 	private JTextField textFieldNomeCompleto;
 	private JTextField textFieldCPF;
 	private JTextField textFieldDataNasc;
@@ -36,6 +43,14 @@ public class TelaNovoCliente extends JFrame {
 	private JTextField textFieldCEP;
 	private JTextField textFieldCidade;
 	private JTextField textFieldEstado;
+	//spc
+	private JRadioButton rdbtnSPCSim;
+	private JRadioButton rdbtnSPCNao;
+	//botoes fim da tela
+	private JButton btnSalvar;
+	private JButton btnVoltar;
+	private JButton btnVerOrdensDe;
+	
 
 	/**
 	 * Launch the application.
@@ -45,6 +60,7 @@ public class TelaNovoCliente extends JFrame {
 			public void run() {
 				try {
 					TelaNovoCliente frame = new TelaNovoCliente();
+					TelaNovoClienteController controles = new TelaNovoClienteController(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -156,38 +172,31 @@ getContentPane().setBackground(new Color(229, 229, 229));
 		textFieldEstado.setFont(new Font("Roboto", Font.PLAIN, 11));
 		textFieldEstado.setColumns(10);
 		
-		JRadioButton rdbtnSPCSim = new JRadioButton("Sim");
+		rdbtnSPCSim = new JRadioButton("Sim");
 		rdbtnSPCSim.setBackground(new Color(229, 229, 229));
 		rdbtnSPCSim.setFont(new Font("Roboto", Font.PLAIN, 11));
+		rdbtnSPCSim.setSelected(false);
 		
-		JRadioButton rdbtnSPCNao = new JRadioButton("Não");
+		rdbtnSPCNao = new JRadioButton("Não");
 		rdbtnSPCNao.setBackground(new Color(229, 229, 229));
 		rdbtnSPCNao.setFont(new Font("Roboto", Font.PLAIN, 11));
+		rdbtnSPCNao.setSelected(false);
 		
-		JButton btnVerOrdensDe = new JButton("Ver ordens de serviço");
-		btnVerOrdensDe.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnVerOrdensDe = new JButton("Ver ordens de serviço");
 		btnVerOrdensDe.setForeground(Color.WHITE);
 		btnVerOrdensDe.setFont(new Font("Roboto", Font.PLAIN, 18));
 		btnVerOrdensDe.setContentAreaFilled(false);
 		btnVerOrdensDe.setBackground(new Color(122, 122, 122));
 		btnVerOrdensDe.setOpaque(true);
 		
-		JButton btnEditar = new JButton("Editar");
-		btnEditar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-
-		btnEditar.setForeground(Color.WHITE);
-		btnEditar.setFont(new Font("Roboto", Font.PLAIN, 18));
-		btnEditar.setContentAreaFilled(false);
-		btnEditar.setBackground(new Color(200, 50, 43));
-		btnEditar.setOpaque(true);
+		btnSalvar = new JButton("Salvar");
+		btnSalvar.setForeground(Color.WHITE);
+		btnSalvar.setFont(new Font("Roboto", Font.PLAIN, 18));
+		btnSalvar.setContentAreaFilled(false);
+		btnSalvar.setBackground(new Color(200, 50, 43));
+		btnSalvar.setOpaque(true);
 		
-		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar = new JButton("Voltar");
 		btnVoltar.setForeground(Color.WHITE);
 		btnVoltar.setFont(new Font("Roboto", Font.PLAIN, 18));
 		btnVoltar.setContentAreaFilled(false);
@@ -214,7 +223,7 @@ getContentPane().setBackground(new Color(229, 229, 229));
 								.addGroup(gl_panel_1.createSequentialGroup()
 									.addComponent(btnVerOrdensDe)
 									.addGap(93)
-									.addComponent(btnEditar, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
+									.addComponent(btnSalvar, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
 									.addGap(39)
 									.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
 									.addContainerGap(49, Short.MAX_VALUE))
@@ -315,7 +324,7 @@ getContentPane().setBackground(new Color(229, 229, 229));
 					.addGap(124)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING, false)
 						.addComponent(btnVerOrdensDe, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnEditar, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnSalvar, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
 					.addGap(66))
 		);
@@ -349,36 +358,23 @@ getContentPane().setBackground(new Color(229, 229, 229));
 		btnPesquisar.setBackground(new Color(200, 50, 43));
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(TelaPesquisa.class.getResource("/imagens/logo.png")));
+		lblNewLabel.setIcon(new ImageIcon(TelaNovoCliente.class.getResource("/imagens/logo.png")));
 		
-		JButton btnPesquisarTela = new JButton("Pesquisar");
-		btnPesquisarTela.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		
+		btnPesquisarTela = new JButton("Pesquisar");
 		btnPesquisarTela.setFont(new Font("Roboto", Font.PLAIN, 18));
 		btnPesquisarTela.setForeground(Color.WHITE);
 		btnPesquisarTela.setBackground(new Color(200, 50, 43));
 		btnPesquisarTela.setContentAreaFilled(false);
 	    btnPesquisarTela.setOpaque(true);
 		
-		JButton btnNovoCliente = new JButton("Novo cliente");
-		btnNovoCliente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnNovoCliente = new JButton("Novo cliente");
 		btnNovoCliente.setForeground(Color.WHITE);
 		btnNovoCliente.setFont(new Font("Roboto", Font.PLAIN, 18));
 		btnNovoCliente.setBackground(new Color(200, 50, 43));
 		btnNovoCliente.setContentAreaFilled(false);
 	    btnNovoCliente.setOpaque(true);
 		
-		JButton btnNovaOrdem = new JButton("Nova ordem");
-		btnNovaOrdem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnNovaOrdem = new JButton("Nova ordem");
 		btnNovaOrdem.setForeground(Color.WHITE);
 		btnNovaOrdem.setFont(new Font("Roboto", Font.PLAIN, 18));
 		btnNovaOrdem.setBackground(new Color(200, 50, 43));
@@ -416,5 +412,149 @@ getContentPane().setBackground(new Color(229, 229, 229));
 		);
 		panel.setLayout(gl_panel);
 		getContentPane().setLayout(groupLayout);
+	}
+
+	public String getTextFieldNomeCompleto() {
+		return textFieldNomeCompleto.getText();
+	}
+
+	public void setTextFieldNomeCompleto(JTextField textFieldNomeCompleto) {
+		this.textFieldNomeCompleto = textFieldNomeCompleto;
+	}
+
+	public String getTextFieldCPF() {
+		return textFieldCPF.getText();
+	}
+
+	public void setTextFieldCPF(JTextField textFieldCPF) {
+		this.textFieldCPF = textFieldCPF;
+	}
+
+	public String getTextFieldDataNasc() {
+		return textFieldDataNasc.getText();
+	}
+
+	public void setTextFieldDataNasc(JTextField textFieldDataNasc) {
+		this.textFieldDataNasc = textFieldDataNasc;
+	}
+
+	public String getTextFieldTelefone() {
+		return textFieldTelefone.getText();
+	}
+
+	public void setTextFieldTelefone(JTextField textFieldTelefone) {
+		this.textFieldTelefone = textFieldTelefone;
+	}
+
+	public String getTextFieldEndereco() {
+		return textFieldEndereco.getText();
+	}
+
+	public void setTextFieldEndereco(JTextField textFieldEndereco) {
+		this.textFieldEndereco = textFieldEndereco;
+	}
+
+	public String getTextFieldNumeroEnd() {
+		return textFieldNumeroEnd.getText();
+	}
+
+	public void setTextFieldNumeroEnd(JTextField textFieldNumeroEnd) {
+		this.textFieldNumeroEnd = textFieldNumeroEnd;
+	}
+
+	public String getTextFieldComplemento() {
+		return textFieldComplemento.getText();
+	}
+
+	public void setTextFieldComplemento(JTextField textFieldComplemento) {
+		this.textFieldComplemento = textFieldComplemento;
+	}
+
+	public String getTextFieldCEP() {
+		return textFieldCEP.getText();
+	}
+
+	public void setTextFieldCEP(JTextField textFieldCEP) {
+		this.textFieldCEP = textFieldCEP;
+	}
+
+	public String getTextFieldCidade() {
+		return textFieldCidade.getText();
+	}
+
+	public void setTextFieldCidade(JTextField textFieldCidade) {
+		this.textFieldCidade = textFieldCidade;
+	}
+
+	public String getTextFieldEstado() {
+		return textFieldEstado.getText();
+	}
+
+	public void setTextFieldEstado(JTextField textFieldEstado) {
+		this.textFieldEstado = textFieldEstado;
+	}
+
+	public JButton getBtnPesquisarTela() {
+		return btnPesquisarTela;
+	}
+
+	public void setBtnPesquisarTela(JButton btnPesquisarTela) {
+		this.btnPesquisarTela = btnPesquisarTela;
+	}
+
+	public JButton getBtnNovoCliente() {
+		return btnNovoCliente;
+	}
+
+	public void setBtnNovoCliente(JButton btnNovoCliente) {
+		this.btnNovoCliente = btnNovoCliente;
+	}
+
+	public JButton getBtnNovaOrdem() {
+		return btnNovaOrdem;
+	}
+
+	public void setBtnNovaOrdem(JButton btnNovaOrdem) {
+		this.btnNovaOrdem = btnNovaOrdem;
+	}
+
+	public JButton getBtnSalvar() {
+		return btnSalvar;
+	}
+
+	public void setBtnSalvar(JButton btnSalvar) {
+		this.btnSalvar = btnSalvar;
+	}
+
+	public JButton getBtnVoltar() {
+		return btnVoltar;
+	}
+
+	public void setBtnVoltar(JButton btnVoltar) {
+		this.btnVoltar = btnVoltar;
+	}
+
+	public JRadioButton getRdbtnSPCSim() {
+		return rdbtnSPCSim;
+	}
+
+	public void setRdbtnSPCSim(JRadioButton rdbtnSPCSim) {
+		this.rdbtnSPCSim = rdbtnSPCSim;
+	}
+
+	public JRadioButton getRdbtnSPCNao() {
+		return rdbtnSPCNao;
+	}
+
+	public void setRdbtnSPCNao(JRadioButton rdbtnSPCNao) {
+		this.rdbtnSPCNao = rdbtnSPCNao;
+	}
+
+	public JButton getBtnVerOrdensDe() {
+		return btnVerOrdensDe;
+	}
+
+	public void setBtnVerOrdensDe(JButton btnVerOrdensDe) {
+		this.btnVerOrdensDe = btnVerOrdensDe;
 	}
 }

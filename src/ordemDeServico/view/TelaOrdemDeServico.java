@@ -32,9 +32,10 @@ public class TelaOrdemDeServico extends JFrame {
 	private JPanel contentPane;
 	private JTextField textFieldNomeCompleto;
 	private JTextField textFieldTelefone;
+	private JTextPane textPaneObservacoes;
 	private JTextField textFieldPreco;
-	private JTextField textField;
-	
+	private JTextField textFieldPreco2;
+	//menu
 	private JButton btnPesquisarTela;
 	private JButton btnNovoCliente;
 	private JButton btnNovaOrdem;
@@ -218,9 +219,9 @@ public class TelaOrdemDeServico extends JFrame {
 		btnPesquisarLente.setBackground(new Color(122, 122, 122));
 		btnPesquisarLente.setOpaque(true);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Roboto", Font.PLAIN, 18));
-		textField.setColumns(10);
+		textFieldPreco2 = new JTextField();
+		textFieldPreco2.setFont(new Font("Roboto", Font.PLAIN, 18));
+		textFieldPreco2.setColumns(10);
 		
 		JLabel lblPreco_1 = new JLabel("Preço");
 		lblPreco_1.setFont(new Font("Roboto", Font.PLAIN, 18));
@@ -276,7 +277,7 @@ public class TelaOrdemDeServico extends JFrame {
 							.addGap(45))
 						.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
-								.addComponent(textField, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+								.addComponent(textFieldPreco2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
 								.addGroup(gl_panel_1.createSequentialGroup()
 									.addComponent(lblPreco)
 									.addGap(193))
@@ -331,7 +332,7 @@ public class TelaOrdemDeServico extends JFrame {
 					.addGap(18)
 					.addComponent(lblPreco_1, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+					.addComponent(textFieldPreco2, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnAdicionarReceita, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
@@ -341,9 +342,9 @@ public class TelaOrdemDeServico extends JFrame {
 					.addContainerGap())
 		);
 		
-		JTextPane textPane = new JTextPane();
-		scrollPane_1.setViewportView(textPane);
-		textPane.setFont(new Font("Roboto", Font.PLAIN, 18));
+		textPaneObservacoes = new JTextPane();
+		scrollPane_1.setViewportView(textPaneObservacoes);
+		textPaneObservacoes.setFont(new Font("Roboto", Font.PLAIN, 18));
 		panel_1.setLayout(gl_panel_1);
 		getContentPane().setLayout(groupLayout);
 	}
@@ -356,6 +357,10 @@ public class TelaOrdemDeServico extends JFrame {
 	public JTextField getTextFieldTelefone() {
 		return textFieldTelefone;
 	}
+	
+	public String getTextPaneObservacoes() {
+		return textPaneObservacoes.getText();
+	}
 
 
 	public JTextField getTextFieldPreco() {
@@ -363,34 +368,36 @@ public class TelaOrdemDeServico extends JFrame {
 	}
 
 
-	public JTextField getTextField() {
-		return textField;
+	public JTextField getTextFieldPreco2() {
+		return textFieldPreco2;
 	}
 
 	
-	public void setTextFieldNomeCompleto(JTextField textFieldNomeCompleto) {
-		this.textFieldNomeCompleto = textFieldNomeCompleto;
+	public void setTextFieldNomeCompleto(String textFieldNomeCompleto) {
+		this.textFieldNomeCompleto.setText(textFieldNomeCompleto);
 	}
 
-	public void setTextFieldTelefone(JTextField textFieldTelefone) {
-		this.textFieldTelefone = textFieldTelefone;
+	public void setTextFieldTelefone(String textFieldTelefone) {
+		this.textFieldTelefone.setText(textFieldTelefone);
+	}
+	
+	public void setTextPaneObservacoes(JTextPane textPaneObservacoes) {
+		this.textPaneObservacoes = textPaneObservacoes;
 	}
 
 
-	public void setTextFieldPreco(JTextField textFieldPreco) {
-		this.textFieldPreco = textFieldPreco;
+	public void setTextFieldPreco(String textFieldPreco) {
+		this.textFieldPreco.setText(textFieldPreco);
 	}
 
 
-	public void setTextField(JTextField textField) {
-		this.textField = textField;
+	public void setTextFieldPreco2(String textField) {
+		this.textFieldPreco2.setText(textField);
 	}
-
 
 	public JButton getBtnPesquisarTela() {
 		return btnPesquisarTela;
 	}
-
 
 	public void setBtnPesquisarTela(JButton btnPesquisarTela) {
 		this.btnPesquisarTela = btnPesquisarTela;

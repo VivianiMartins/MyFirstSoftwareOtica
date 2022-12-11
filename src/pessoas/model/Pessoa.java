@@ -74,6 +74,46 @@ public abstract class Pessoa implements Serializable{
 		} else throw new PessoaExcecao(nomeCompleto, cpf, telefone);
 	}
 	
+	public Pessoa(String nomeCompleto, String dataNascimento, long cpf, 
+			String enderecoRua, String enderecoNumero, String enderecoComplemento, 
+			String enderecoCep, String enderecoCidade, String enderecoEstado,
+			long telefone, String tipo) throws PessoaExcecao{
+		if(nomeCompleto != null && cpf > 0 && telefone > 0) {
+			this.setNomeCompleto( nomeCompleto);
+			this.setDataNascimento(dataNascimento);
+			this.setCpf((long)cpf);
+			this.setEndereco(enderecoRua, enderecoNumero, enderecoComplemento, 
+					enderecoCep,null, enderecoCidade, enderecoEstado, null);
+			this.setTelefone(telefone);
+			this.setTipo(tipo);
+		} else throw new PessoaExcecao(nomeCompleto, cpf, telefone);
+	}
+	
+	public Pessoa(Object object1, Object object2, long cpf, 
+			Object object3, Object object4) {
+		this.setNomeCompleto(object1);
+		this.setDataNascimento(object2);
+		this.setCpf((long)cpf);
+		this.setEndereco(object3);
+		this.setTelefone(object4);
+		
+	}
+	
+	private void setNomeCompleto(Object object1) {
+		this.nomeCompleto = (String) object1;
+	}
+	
+	private void setDataNascimento(Object object2) {
+		this.dataNascimento = (String)object2;
+	}
+	
+	private void setEndereco(Object object3) {
+		this.endereco = (String)object3;
+	}
+	
+	private void setTelefone(Object object4) {
+		this.telefone = (long)object4;
+	}
 
 	private void setTipo(String tipo){
 		this.tipo = tipo;
@@ -135,6 +175,10 @@ public abstract class Pessoa implements Serializable{
 
 	private void setDataNascimento(int dia, int mes, int ano) {
 		String dataNascimento = dia + "/" + mes + "/" + ano;
+		this.dataNascimento = dataNascimento;
+	}
+	
+	private void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
@@ -316,7 +360,7 @@ public abstract class Pessoa implements Serializable{
 		Connection con = conectar.getConexao();
 		//System.out.println(con.toString());
 		
-		String pesquisarPessoa = "SELECT cpf, nome_completo, endereco, telefone FROM pessoa " +
+		String pesquisarPessoa = "SELECT cpf, nome_completo, endereco, data_nascimento telefone FROM pessoa " +
 					"WHERE cpf = ?";
 		//System.out.println( "\n\nPesquisar: " + pesquisarPessoa);
 		
@@ -333,6 +377,7 @@ public abstract class Pessoa implements Serializable{
 			int iNome = 2;
 			int iEndereco = 3;
 			int iTelefone = 4;
+			int iDataNscimento = 5;
 			
 			int conta = 0;
 			
@@ -340,7 +385,9 @@ public abstract class Pessoa implements Serializable{
 				
 				while(resultado.next()){
 					System.out.println( "\nCPF: " + resultado.getObject(iCpf)+ "\nNome: " + resultado.getString(iNome) + 
-							"\nEndereço: " + resultado.getString(iEndereco) + "\nTelefone: " + resultado.getObject(iTelefone) );
+							"\nEndereço: " + resultado.getString(iEndereco) + "\nTelefone: " + resultado.getObject(iTelefone)
+							+ "\nDataNascimento: " + resultado.getString(iDataNscimento));
+					
 					conta++;
 				}
 				

@@ -20,7 +20,7 @@ public class Cliente extends Pessoa{
 		this.setSpc(spc);
 	}
 	
-	public Cliente(String nomeCompleto, int dia, int mes, int ano, int cpf, 
+	public Cliente(String nomeCompleto, int dia, int mes, int ano, long cpf, 
 			String enderecoRua, String enderecoNumero, String enderecoComplemento, String enderecoBairro, 
 			String enderecoCep, String enderecoCidade, String enderecoEstado,  String enderecoPais,
 			long telefone, String tipo) throws PessoaExcecao{
@@ -28,6 +28,26 @@ public class Cliente extends Pessoa{
 				enderecoRua, enderecoNumero, enderecoComplemento, enderecoBairro, 
 				enderecoCep, enderecoCidade, enderecoEstado,  enderecoPais, (long)telefone, tipo);
 		this.setSpc(false);
+	}
+	
+	public Cliente(String nomeCompleto, String dataNascimento, long cpf, 
+			String enderecoRua, String enderecoNumero, String enderecoComplemento, 
+			String enderecoCep, String enderecoCidade, String enderecoEstado,
+			long telefone, String tipo, boolean spc) throws PessoaExcecao{
+		super( nomeCompleto, dataNascimento, (long)cpf, 
+				enderecoRua, enderecoNumero, enderecoComplemento, 
+				enderecoCep, enderecoCidade, enderecoEstado, (long)telefone, tipo);
+		this.setSpc(spc);
+	}
+	
+	public Cliente( Object object1, Object object2, long cpf, 
+			Object object3, Object object4,Object object5) {
+		super(object1, object2, (long) cpf, object3, object4);
+		this.setSpc(object5);
+	}
+
+	private void setSpc(Object object) {
+		this.spc = (boolean) object;
 	}
 	
 	private void setSpc(boolean spc) {
@@ -163,31 +183,47 @@ public class Cliente extends Pessoa{
 		}
 	}
 
-	public static void pesquisarCliente(long cpf) {
-		pesquisarPessoa((long)cpf);
-		
+	public static Cliente pesquisarCliente(long cpf) {
+			
 		Conexao conectar = new Conexao();
 		Connection con = conectar.getConexao();
+		Cliente cliente = null;
 		
-		String pesquisarCliente = "SELECT consulta_spc FROM cliente WHERE fk_pessoa_cpf = ?";
+
+		String pesquisarCliente = "SELECT o.nome_completo, o.endereco, o.telefone, o.data_nascimento, i.consulta_spc "
+				+ "FROM pessoa AS o "
+				+ "INNER JOIN cliente AS i "
+				+ "ON o.cpf = i.fk_pessoa_cpf "
+				+ "WHERE o.cpf = ?";
+		
 		
 		try {
 			ResultSet resultado = null;
 			PreparedStatement stmPesquisarCliente = con.prepareStatement(pesquisarCliente);
-		
 			stmPesquisarCliente.setLong(1, (long)cpf);
-				
+		
+			System.out.println(stmPesquisarCliente.toString());
 			resultado = stmPesquisarCliente.executeQuery();
-			
-			int iSPC = 1; 
+		 
+			int iNome = 1;
+			int iEndereco = 2;
+			int iTelefone = 3;
+			int iDataNscimento = 4;
+			int iSPC = 5;
 			
 			int conta = 0;
 			
 			if(resultado != null){
 				
 				while(resultado.next()){
-					System.out.println( "\nSPC: " + resultado.getObject(iSPC));
+					System.out.println( "\nNome: " + resultado.getString(iNome) + 
+							"\nEndereço: " + resultado.getString(iEndereco) + "\nTelefone: " + resultado.getObject(iTelefone)
+							+ "\nDataNascimento: " + resultado.getString(iDataNscimento) + "\nSPC: " + resultado.getObject(iSPC));
+					
+					cliente = new Cliente(resultado.getString(iNome), resultado.getString(iDataNscimento), cpf, 
+							resultado.getString(iEndereco), resultado.getObject(iTelefone), resultado.getBoolean(iSPC));
 					conta++;
+					return cliente;
 				}
 				
 			}
@@ -213,6 +249,7 @@ public class Cliente extends Pessoa{
 				}
 			}
 		}
+		return cliente;
 	}
 	
 	public String toString() {

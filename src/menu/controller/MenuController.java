@@ -21,16 +21,19 @@ public class MenuController implements ActionListener {
 	public void abrirTelaPesquisar() {
 		TelaPesquisa frame = new TelaPesquisa();
 		frame.setVisible(true);
+		this.menu.setVisible(false);
 	}
 	
 	public void abrirTelaNovoCliente() {
 		TelaNovoCliente frame = new TelaNovoCliente();
 		frame.setVisible(true);
+		this.menu.setVisible(false);
 	}
 	
 	public void abrirTelaOrdemDeServico() {
 		TelaOrdemDeServico frame = new TelaOrdemDeServico();
 		frame.setVisible(true);
+		this.menu.setVisible(false);
 	}
 
 	@Override
